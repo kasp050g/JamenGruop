@@ -61,6 +61,22 @@
     <Compile Include="Script\Core Script\Static Component\GraphicsSetting.cs" />
     <Compile Include="Script\Core Script\Static Component\Input.cs" />
     <Compile Include="Script\Core Script\Static Component\Time.cs" />
+    <Compile Include="Script\Jamen Gruop\AI\_AI.cs" />
+    <Compile Include="Script\Jamen Gruop\Animation\Animation.cs" />
+    <Compile Include="Script\Jamen Gruop\Buildings\Barracks.cs" />
+    <Compile Include="Script\Jamen Gruop\Enum\ETeam.cs" />
+    <Compile Include="Script\Jamen Gruop\Player\Player.cs" />
+    <Compile Include="Script\Jamen Gruop\Player\PlayerSelectionRegion.cs" />
+    <Compile Include="Script\Jamen Gruop\Resources\Goldmine.cs" />
+    <Compile Include="Script\Jamen Gruop\Resources\Lumbermill.cs" />
+    <Compile Include="Script\Jamen Gruop\Resources\ResourceBuilding.cs" />
+    <Compile Include="Script\Jamen Gruop\UI\NeedMoreUIStuff.cs" />
+    <Compile Include="Script\Jamen Gruop\UI\StartMenu.cs" />
+    <Compile Include="Script\Jamen Gruop\Units\Ballista.cs" />
+    <Compile Include="Script\Jamen Gruop\Units\Footman.cs" />
+    <Compile Include="Script\Jamen Gruop\Units\Knight.cs" />
+    <Compile Include="Script\Jamen Gruop\Units\Unit.cs" />
+    <Compile Include="Script\Jamen Gruop\Worker\Worker.cs" />
     <Compile Include="Script\Scenes\TestScene01.cs" />
   </ItemGroup>
   <ItemGroup>
