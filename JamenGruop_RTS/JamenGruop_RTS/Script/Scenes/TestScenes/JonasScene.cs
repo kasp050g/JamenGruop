@@ -1,26 +1,22 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
-namespace JamenGruop_RTS
+namespace JamenGruop_RTS.Script.Scenes.TestScenes
 {
-	public class TestScene01 : Scene
+	public class JonasScene : Scene
 	{
-
-        public override void Initialize()
+		public override void Initialize()
 		{
 			base.Initialize();
-			
 		}
 
 		public override void OnSwitchToThisScene()
 		{
-
-            base.OnSwitchToThisScene();
+			base.OnSwitchToThisScene();
 		}
 
 		public override void OnSwitchAwayFromThisScene()

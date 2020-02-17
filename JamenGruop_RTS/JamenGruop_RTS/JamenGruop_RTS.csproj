@@ -73,11 +73,16 @@
     <Compile Include="Script\Jamen Gruop\UI\NeedMoreUIStuff.cs" />
     <Compile Include="Script\Jamen Gruop\UI\StartMenu.cs" />
     <Compile Include="Script\Jamen Gruop\Units\Ballista.cs" />
+    <Compile Include="Script\Jamen Gruop\Units\Character.cs" />
     <Compile Include="Script\Jamen Gruop\Units\Footman.cs" />
     <Compile Include="Script\Jamen Gruop\Units\Knight.cs" />
+    <Compile Include="Script\Jamen Gruop\Units\Stat.cs" />
     <Compile Include="Script\Jamen Gruop\Units\Unit.cs" />
     <Compile Include="Script\Jamen Gruop\Worker\Worker.cs" />
     <Compile Include="Script\Scenes\TestScene01.cs" />
+    <Compile Include="Script\Scenes\TestScenes\JonasScene.cs" />
+    <Compile Include="Script\Scenes\TestScenes\KasperScene.cs" />
+    <Compile Include="Script\Scenes\TestScenes\NicolaScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
