@@ -15,7 +15,13 @@ namespace JamenGruop_RTS.Script.Jamen_Gruop.Units
 
 		protected Unit myTarget;
 
-		
+		protected virtual void AttackTarget()
+		{
+			if (myTarget != null)
+			{
+				myTarget.TakeDamage(damage + (unitZone == UnitZone.attakcer ? 1 : 0));
+			}
+		}
 
 		public override void Awake()
 		{
