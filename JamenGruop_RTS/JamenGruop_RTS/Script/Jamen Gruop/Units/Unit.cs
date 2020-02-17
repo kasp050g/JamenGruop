@@ -20,6 +20,17 @@ namespace JamenGruop_RTS
         protected Vector2 myNewPosition02;
 
         protected Unit myTarget;
+        protected ETeam myTeam;
+
+        private int foodCost;
+
+        public int FoodCost { get => foodCost; set => foodCost = value; }
+
+        public Unit(Vector2 position, ETeam team)
+        {
+            this.transform.Position = position;
+            this.myTeam = team;
+        }
 
         protected virtual void AttackTarget()
         {

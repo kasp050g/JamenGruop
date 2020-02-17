@@ -69,8 +69,8 @@
     <Compile Include="Script\Jamen Gruop\Buildings\Barracks.cs" />
     <Compile Include="Script\Jamen Gruop\Enum\ETeam.cs" />
     <Compile Include="Script\Jamen Gruop\JonasTest\BackgroundImage.cs" />
-    <Compile Include="Script\Jamen Gruop\Player\Player.cs" />
-    <Compile Include="Script\Jamen Gruop\Player\PlayerSelectionRegion.cs" />
+    <Compile Include="Script\Jamen Gruop\Players\Player.cs" />
+    <Compile Include="Script\Jamen Gruop\Players\PlayerSelectionRegion.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\Goldmine.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\Lumbermill.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\ResourceBuilding.cs" />

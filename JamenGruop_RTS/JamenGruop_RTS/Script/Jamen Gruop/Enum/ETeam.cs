@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamenGruop_RTS.Script.Jamen_Gruop.Enum
+namespace JamenGruop_RTS
 {
-	enum ETeam
+	public enum ETeam
 	{
 		Team01, Team02,
 		Team03, Team04,
