@@ -26,11 +26,34 @@ namespace JamenGruop_RTS
 			};
 			Scenes.Add(Test01);
 
-            TestScene01 Test02 = new TestScene01
+            JonasScene jonasScene = new JonasScene
             {
-				Name = "Test02"
-			};
-			Scenes.Add(Test02);
-		}
+				Name = "jonasScene"
+            };
+            jonasScene.Initialize();
+            Scenes.Add(jonasScene);
+
+            NicolaScene nicolaScene = new NicolaScene
+            {
+                Name = "nicolaScene"
+            };
+            nicolaScene.Initialize();
+            Scenes.Add(nicolaScene);
+
+            KasperScene kasperScene = new KasperScene
+            {
+                Name = "kasperScene"
+            };
+            kasperScene.Initialize();
+            Scenes.Add(kasperScene);
+
+            LucasScene lucasScene = new LucasScene
+            {
+                Name = "lucasScene"
+            };
+            lucasScene.Initialize();
+            Scenes.Add(lucasScene);
+
+        }
 	}
 }

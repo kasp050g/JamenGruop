@@ -12,6 +12,7 @@ namespace JamenGruop_RTS
 		private static SceneContainer sceneContainer = new SceneContainer();
 		private static Camera camera = new Camera();
 		private static Scene currentScene;
+        public static eCurrentTestScene eCurrentTest;
 
 		public static Camera Camera { get => camera; set => camera = value; }
 		public static SceneContainer SceneContainer { get => sceneContainer; set => sceneContainer = value; }
@@ -45,7 +46,27 @@ namespace JamenGruop_RTS
 		{
 			SceneContainer.Initialize();
 			CurrentScene = SceneContainer.Scenes[0];
-		}
+
+            switch (eCurrentTest)
+            {
+                case eCurrentTestScene.None:
+                    break;
+                case eCurrentTestScene.Jonas:
+                    CurrentScene = SceneContainer.Scenes[1];
+                    break;
+                case eCurrentTestScene.Nikolaj:
+                    CurrentScene = SceneContainer.Scenes[2];
+                    break;
+                case eCurrentTestScene.Kasper:
+                    CurrentScene = SceneContainer.Scenes[3];
+                    break;
+                case eCurrentTestScene.Lucas:
+                    CurrentScene = SceneContainer.Scenes[4];
+                    break;
+                default:
+                    break;
+            }
+        }
 
 		public static void UpdateScenes()
 		{
