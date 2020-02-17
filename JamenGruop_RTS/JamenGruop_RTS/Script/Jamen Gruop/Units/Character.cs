@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamenGruop_RTS.Script.Jamen_Gruop.Units
+namespace JamenGruop_RTS
 {
 	public class Character : GameObject
 	{
@@ -27,7 +27,7 @@ namespace JamenGruop_RTS.Script.Jamen_Gruop.Units
 		public Stat Health { get; set; } = new Stat();
 		public Stat Armor { get; set; } = new Stat();
 
-		protected UnitZone unitZone;
+		protected eUnitZone unitZone;
 
 		/// <summary>
 		/// Blood color.
@@ -53,7 +53,7 @@ namespace JamenGruop_RTS.Script.Jamen_Gruop.Units
 		/// <param name="damage"></param>
 		public virtual void TakeDamage(int damage)
 		{
-			if(unitZone == UnitZone.defender)
+			if(unitZone == eUnitZone.defender)
 			{
 				damage -= (int)Armor.currentValue + 1;
 			}

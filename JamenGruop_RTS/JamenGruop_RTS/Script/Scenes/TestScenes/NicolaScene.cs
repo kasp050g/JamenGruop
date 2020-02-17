@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamenGruop_RTS.Script.Scenes.TestScenes
+namespace JamenGruop_RTS
 {
 	public class NicolaScene : Scene
 	{

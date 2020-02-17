@@ -5,16 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamenGruop_RTS 
+namespace JamenGruop_RTS
 {
-	public class Footman : Unit
-	{
+    public class BackgroundImage : Component
+    {
+        public BackgroundImage(Texture2D sprite)
+        {
+            this.sprite = sprite;
+        }
+
         public override void Awake()
         {
+            layerDepth = 0;
+            if (Sprite == null)
+            {
+                Sprite = SpriteContainer.sprite["Pixel"];
+            }
             base.Awake();
-            layerDepth = 1;
-            sprite = SpriteContainer.sprite["UnitTest"];
-            OriginPositionEnum = OriginPositionEnum.Mid;
         }
 
         public override void Start()

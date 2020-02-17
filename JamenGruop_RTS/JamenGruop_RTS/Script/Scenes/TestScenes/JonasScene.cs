@@ -1,18 +1,29 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamenGruop_RTS.Script.Scenes.TestScenes
+namespace JamenGruop_RTS
 {
 	public class JonasScene : Scene
 	{
-		public override void Initialize()
+
+        public override void Initialize()
 		{
-			base.Initialize();
-		}
+            BackgroundImage backgroundtest = new BackgroundImage(SpriteContainer.sprite["BackgroundTest"]);
+            backgroundtest.OriginPositionEnum = OriginPositionEnum.Mid;
+            Instantiate(backgroundtest);
+            base.Initialize();
+            SceneController.eCurrentTest = eCurrentTestScene.Jonas;
+
+            Console.WriteLine("got hereerererer");
+
+            Footman footman = new Footman();
+            Instantiate(footman);
+        }
 
 		public override void OnSwitchToThisScene()
 		{
@@ -32,6 +43,6 @@ namespace JamenGruop_RTS.Script.Scenes.TestScenes
 		public override void Draw(SpriteBatch spriteBatch)
 		{
 			base.Draw(spriteBatch);
-		}
+        }
 	}
 }

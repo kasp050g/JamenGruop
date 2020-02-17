@@ -5,21 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamenGruop_RTS 
+namespace JamenGruop_RTS
 {
-	public class Footman : Unit
-	{
-        public override void Awake()
+    public class LucasScene : Scene
+    {
+        public override void Initialize()
         {
-            base.Awake();
-            layerDepth = 1;
-            sprite = SpriteContainer.sprite["UnitTest"];
-            OriginPositionEnum = OriginPositionEnum.Mid;
+            base.Initialize();
         }
 
-        public override void Start()
+        public override void OnSwitchToThisScene()
         {
-            base.Start();
+            base.OnSwitchToThisScene();
+        }
+
+        public override void OnSwitchAwayFromThisScene()
+        {
+            base.OnSwitchAwayFromThisScene();
         }
 
         public override void Update()
