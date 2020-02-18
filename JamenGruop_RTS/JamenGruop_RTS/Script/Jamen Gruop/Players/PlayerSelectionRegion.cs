@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamenGruop_RTS.Script.Jamen_Gruop.Players
+namespace JamenGruop_RTS
 {
 	class PlayerSelectionRegion : GameObject
 	{

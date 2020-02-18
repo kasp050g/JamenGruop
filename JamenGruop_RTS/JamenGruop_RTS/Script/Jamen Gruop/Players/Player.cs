@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamenGruop_RTS.Script.Jamen_Gruop.Players
+namespace JamenGruop_RTS
 {
 	class Player : GameObject
 	{
+<<<<<<< Updated upstream
 		private int playerGold = 0;
 		private int playerWood = 0;
 		private int playerCurrentFood = 0;
@@ -51,5 +52,12 @@ namespace JamenGruop_RTS.Script.Jamen_Gruop.Players
 				playerSelectReg = null;
 			}
 		}
+=======
+		public int PlayerGold = 0;
+		public int PlayerWood = 0;
+		public int PlayerCurrentFood = 0;
+		public int PlayerMaxFood = 0;
+		public ETeam PlayerTeam = new ETeam();
+>>>>>>> Stashed changes
 	}
 }
