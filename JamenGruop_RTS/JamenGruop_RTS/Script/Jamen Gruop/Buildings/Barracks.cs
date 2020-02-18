@@ -1,14 +1,12 @@
 ﻿
-using JamenGruop_RTS.Script.Jamen_Gruop.Units;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JamenGruop_RTS.Script.Jamen_Gruop.Players;
 
-namespace JamenGruop_RTS.Script.Jamen_Gruop.Buildings
+namespace JamenGruop_RTS
 {
 	class Barracks : GameObject
 	{

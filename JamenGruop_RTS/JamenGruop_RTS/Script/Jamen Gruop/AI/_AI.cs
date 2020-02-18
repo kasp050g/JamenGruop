@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamenGruop_RTS.Script.Jamen_Gruop.AI
+namespace JamenGruop_RTS
 {
 	class _AI
 	{
