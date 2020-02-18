@@ -66,6 +66,10 @@
     <Compile Include="Script\Jamen Gruop\Animation\SpriteSheetCutter.cs" />
     <Compile Include="Script\Jamen Gruop\Buildings\Barracks.cs" />
     <Compile Include="Script\Jamen Gruop\Enum\ETeam.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Script\Jamen Gruop\JonasTest\BackgroundImage.cs" />
+>>>>>>> TestBeMaster
     <Compile Include="Script\Jamen Gruop\Players\Player.cs" />
     <Compile Include="Script\Jamen Gruop\Players\PlayerSelectionRegion.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\Goldmine.cs" />

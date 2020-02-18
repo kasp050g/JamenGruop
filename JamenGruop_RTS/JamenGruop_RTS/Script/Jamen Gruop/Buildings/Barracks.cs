@@ -1,4 +1,4 @@
-﻿using JamenGruop_RTS.Script.Jamen_Gruop.Enum;
+﻿
 using JamenGruop_RTS.Script.Jamen_Gruop.Units;
 using Microsoft.Xna.Framework;
 using System;
@@ -53,8 +53,7 @@ namespace JamenGruop_RTS.Script.Jamen_Gruop.Buildings
 		private void RecruitUnit()
 		{
 			tmp = new Unit(
-				(int)creationPoint.X,
-				(int)creationPoint.Y,
+                new Vector2((int)creationPoint.X, (int)creationPoint.Y),
 				BarracksTeam
 				);
 
