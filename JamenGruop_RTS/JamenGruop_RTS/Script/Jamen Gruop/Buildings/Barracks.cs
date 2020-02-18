@@ -27,6 +27,7 @@ namespace JamenGruop_RTS.Script.Jamen_Gruop.Buildings
 			BarracksTeam = team;
 			this.owner = owner;
 			owner.PlayerMaxFood += 25;
+
 		}
 
 		public override void Update()
