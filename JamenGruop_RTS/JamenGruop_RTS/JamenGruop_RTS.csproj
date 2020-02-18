@@ -7,7 +7,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{D923C0E8-1F08-4D9D-96B9-6491F6396D5D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JamenGruop_RTS</RootNamespace>
     <AssemblyName>JamenGruop_RTS</AssemblyName>
@@ -40,9 +40,6 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Compile Include="GameWorld.cs" />
     <Compile Include="Program.cs" />
@@ -66,11 +63,11 @@
     <Compile Include="Script\Core Script\Static Component\Time.cs" />
     <Compile Include="Script\Jamen Gruop\AI\_AI.cs" />
     <Compile Include="Script\Jamen Gruop\Animation\Animation.cs" />
+    <Compile Include="Script\Jamen Gruop\Animation\SpriteSheetCutter.cs" />
     <Compile Include="Script\Jamen Gruop\Buildings\Barracks.cs" />
     <Compile Include="Script\Jamen Gruop\Enum\ETeam.cs" />
-    <Compile Include="Script\Jamen Gruop\JonasTest\BackgroundImage.cs" />
-    <Compile Include="Script\Jamen Gruop\Player\Player.cs" />
-    <Compile Include="Script\Jamen Gruop\Player\PlayerSelectionRegion.cs" />
+    <Compile Include="Script\Jamen Gruop\Players\Player.cs" />
+    <Compile Include="Script\Jamen Gruop\Players\PlayerSelectionRegion.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\Goldmine.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\Lumbermill.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\ResourceBuilding.cs" />
@@ -78,17 +75,14 @@
     <Compile Include="Script\Jamen Gruop\UI\StartMenu.cs" />
     <Compile Include="Script\Jamen Gruop\Units\Ballista.cs" />
     <Compile Include="Script\Jamen Gruop\Units\Character.cs" />
-    <Compile Include="Script\Jamen Gruop\Units\eUnitZone.cs" />
     <Compile Include="Script\Jamen Gruop\Units\Footman.cs" />
     <Compile Include="Script\Jamen Gruop\Units\Knight.cs" />
     <Compile Include="Script\Jamen Gruop\Units\Stat.cs" />
     <Compile Include="Script\Jamen Gruop\Units\Unit.cs" />
     <Compile Include="Script\Jamen Gruop\Worker\Worker.cs" />
     <Compile Include="Script\Scenes\TestScene01.cs" />
-    <Compile Include="Script\Scenes\TestScenes\eCurrentTestScene.cs" />
     <Compile Include="Script\Scenes\TestScenes\JonasScene.cs" />
     <Compile Include="Script\Scenes\TestScenes\KasperScene.cs" />
-    <Compile Include="Script\Scenes\TestScenes\LucasScene.cs" />
     <Compile Include="Script\Scenes\TestScenes\NicolaScene.cs" />
   </ItemGroup>
   <ItemGroup>
