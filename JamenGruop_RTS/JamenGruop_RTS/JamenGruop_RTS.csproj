@@ -71,6 +71,10 @@
     <Compile Include="Script\Jamen Gruop\JonasTest\BackgroundImage.cs" />
     <Compile Include="Script\Jamen Gruop\Players\Player.cs" />
     <Compile Include="Script\Jamen Gruop\Players\PlayerSelectionRegion.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Script\Jamen Gruop\Resources\Goldmine.cs" />
+>>>>>>> TestBeMaster
     <Compile Include="Script\Jamen Gruop\Resources\Lumbermill.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\ResourceBuilding.cs" />
     <Compile Include="Script\Jamen Gruop\UI\NeedMoreUIStuff.cs" />

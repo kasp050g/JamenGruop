@@ -34,18 +34,7 @@ namespace JamenGruop_RTS
 		/// </summary>
 		protected Color bloodColor = Color.White;
 
-		/// <summary>
-		/// Defines how the object moves.
-		/// </summary>
-		/// <param name="gameTime"></param>
-		public virtual void Move(GameTime gameTime)
-		{
-			// Calculates deltaTime based on the gameTime.
-			float deltatime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-			// Move the GameObject based on the result from HandleInput, speed and deltaTime.
-			Transform.Position += ((velocity * moveSpeed) * deltatime);
-		}
 
 		/// <summary>
 		/// Makes the object take a specific damage.

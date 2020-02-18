@@ -21,7 +21,7 @@ namespace JamenGruop_RTS
 
             Console.WriteLine("got hereerererer");
 
-            Footman footman = new Footman();
+            Footman footman = new Footman(new Vector2(0,0),ETeam.Team01);
             Instantiate(footman);
         }
 
