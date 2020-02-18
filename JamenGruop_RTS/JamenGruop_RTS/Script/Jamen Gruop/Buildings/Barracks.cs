@@ -36,31 +36,31 @@ namespace JamenGruop_RTS.Script.Jamen_Gruop.Buildings
 
 		private void RecruitmentTimer()
 		{
-			while(recruitTimer != 0f &&
-				owner.PlayerMaxFood > owner.PlayerCurrentFood + tmp.FoodCost)
-			{
-				recruitTimer -= Time.deltaTime;
-				switch(recruitTimer)
-				{
-					case 0f:
-						RecruitUnit();
-						recruitTimer = 10f - (1 * recruitBonus);
-						break;
-				}
-			}
+			//while(recruitTimer != 0f &&
+			//	owner.PlayerMaxFood > owner.PlayerCurrentFood + tmp.FoodCost)
+			//{
+			//	recruitTimer -= Time.deltaTime;
+			//	switch(recruitTimer)
+			//	{
+			//		case 0f:
+			//			RecruitUnit();
+			//			recruitTimer = 10f - (1 * recruitBonus);
+			//			break;
+			//	}
+			//}
 		}
 
-		private void RecruitUnit()
-		{
-			tmp = new Unit(
-				(int)creationPoint.X,
-				(int)creationPoint.Y,
-				BarracksTeam
-				);
+		//private void RecruitUnit()
+		//{
+		//	tmp = new Unit(
+		//		(int)creationPoint.X,
+		//		(int)creationPoint.Y,
+		//		BarracksTeam
+		//		);
 
-			createdUnits.Add(tmp);
+		//	createdUnits.Add(tmp);
 
-			SceneController.CurrentScene.Instantiate(tmp);
-		}
+		//	SceneController.CurrentScene.Instantiate(tmp);
+		//}
 	}
 }

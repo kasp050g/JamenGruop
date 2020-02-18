@@ -8,5 +8,6 @@ namespace JamenGruop_RTS.Script.Jamen_Gruop.Worker
 {
 	class Worker
 	{
+
 	}
 }

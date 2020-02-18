@@ -9,9 +9,12 @@ namespace JamenGruop_RTS
 {
 	public class NicolaScene : Scene
 	{
+            Goldmine goldmine = new Goldmine();
 		public override void Initialize()
 		{
 			base.Initialize();
+            SceneController.eCurrentTest = eCurrentTestScene.Nikolaj;
+            goldmine.TIngeligen();
 		}
 
 		public override void OnSwitchToThisScene()
