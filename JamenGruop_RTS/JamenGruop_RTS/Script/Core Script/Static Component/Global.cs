@@ -20,6 +20,7 @@ namespace JamenGruop_RTS
 		public static void Initialize()
 		{
 			SceneController.Initialize();
+            
 		}
 
 		public static void Update(GameTime gameTime)

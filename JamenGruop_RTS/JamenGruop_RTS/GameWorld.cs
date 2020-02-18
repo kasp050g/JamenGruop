@@ -14,8 +14,8 @@ namespace JamenGruop_RTS
 		{
 			graphics = new GraphicsDeviceManager(this);
 			GraphicsSetting.SetGraphics(graphics);
-
-			Content.RootDirectory = "Content";
+            IsMouseVisible = true;
+            Content.RootDirectory = "Content";
 		}
 
 		/// <summary>
