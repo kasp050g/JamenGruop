@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamenGruop_RTS.Script
+namespace JamenGruop_RTS
 {
-	class ResourceBuilding
+	class Goldmine
 	{
 	}
 }

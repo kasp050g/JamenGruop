@@ -71,10 +71,7 @@
     <Compile Include="Script\Jamen Gruop\JonasTest\BackgroundImage.cs" />
     <Compile Include="Script\Jamen Gruop\Players\Player.cs" />
     <Compile Include="Script\Jamen Gruop\Players\PlayerSelectionRegion.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="Script\Jamen Gruop\Resources\Goldmine.cs" />
->>>>>>> TestBeMaster
     <Compile Include="Script\Jamen Gruop\Resources\Lumbermill.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\ResourceBuilding.cs" />
     <Compile Include="Script\Jamen Gruop\UI\NeedMoreUIStuff.cs" />
@@ -86,7 +83,6 @@
     <Compile Include="Script\Jamen Gruop\Units\Knight.cs" />
     <Compile Include="Script\Jamen Gruop\Units\Stat.cs" />
     <Compile Include="Script\Jamen Gruop\Units\Unit.cs" />
-    <Compile Include="Script\Jamen Gruop\Worker\Goldmine.cs" />
     <Compile Include="Script\Jamen Gruop\Worker\Worker.cs" />
     <Compile Include="Script\Scenes\TestScene01.cs" />
     <Compile Include="Script\Scenes\TestScenes\eCurrentTestScene.cs" />

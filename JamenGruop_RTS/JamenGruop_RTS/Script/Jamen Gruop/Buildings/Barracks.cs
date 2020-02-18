@@ -1,14 +1,12 @@
-﻿using JamenGruop_RTS.Script.Jamen_Gruop.Enum;
-using JamenGruop_RTS.Script.Jamen_Gruop.Units;
+﻿
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JamenGruop_RTS.Script.Jamen_Gruop.Players;
 
-namespace JamenGruop_RTS.Script.Jamen_Gruop.Buildings
+namespace JamenGruop_RTS
 {
 	class Barracks : GameObject
 	{
@@ -38,31 +36,30 @@ namespace JamenGruop_RTS.Script.Jamen_Gruop.Buildings
 
 		private void RecruitmentTimer()
 		{
-			//while(recruitTimer != 0f &&
-			//	owner.PlayerMaxFood > owner.PlayerCurrentFood + tmp.FoodCost)
-			//{
-			//	recruitTimer -= Time.deltaTime;
-			//	switch(recruitTimer)
-			//	{
-			//		case 0f:
-			//			RecruitUnit();
-			//			recruitTimer = 10f - (1 * recruitBonus);
-			//			break;
-			//	}
-			//}
+			while(recruitTimer != 0f &&
+				owner.PlayerMaxFood > owner.PlayerCurrentFood + tmp.FoodCost)
+			{
+				recruitTimer -= Time.deltaTime;
+				switch(recruitTimer)
+				{
+					case 0f:
+						RecruitUnit();
+						recruitTimer = 10f - (1 * recruitBonus);
+						break;
+				}
+			}
 		}
 
-		//private void RecruitUnit()
-		//{
-		//	tmp = new Unit(
-		//		(int)creationPoint.X,
-		//		(int)creationPoint.Y,
-		//		BarracksTeam
-		//		);
+		private void RecruitUnit()
+		{
+			tmp = new Unit(
+                new Vector2((int)creationPoint.X, (int)creationPoint.Y),
+				BarracksTeam
+				);
 
-		//	createdUnits.Add(tmp);
+			createdUnits.Add(tmp);
 
-		//	SceneController.CurrentScene.Instantiate(tmp);
-		//}
+			SceneController.CurrentScene.Instantiate(tmp);
+		}
 	}
 }
