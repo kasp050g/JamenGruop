@@ -9,11 +9,13 @@ namespace JamenGruop_RTS
 {
 	public static class Time
 	{
+		public static float totalMilliseconds;
 		public static float deltaTime;
 		public static float time;
 
 		public static void Update(GameTime gameTime)
 		{
+			Time.totalMilliseconds = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 			Time.deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 			Time.time = (float)gameTime.TotalGameTime.TotalSeconds;
 		}
