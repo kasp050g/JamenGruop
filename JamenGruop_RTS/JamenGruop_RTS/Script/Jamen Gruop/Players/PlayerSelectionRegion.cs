@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamenGruop_RTS.Script.Jamen_Gruop.Player
+namespace JamenGruop_RTS
 {
-	class Player
+	class PlayerSelectionRegion
 	{
 	}
 }

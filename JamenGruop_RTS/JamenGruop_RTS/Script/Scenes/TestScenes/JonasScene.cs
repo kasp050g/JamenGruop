@@ -10,6 +10,7 @@ namespace JamenGruop_RTS
 {
 	public class JonasScene : Scene
 	{
+        UnitSelector unitSelector = new UnitSelector();
 
         public override void Initialize()
 		{
@@ -21,8 +22,11 @@ namespace JamenGruop_RTS
 
             Console.WriteLine("got hereerererer");
 
-            Footman footman = new Footman();
+            Footman footman = new Footman(new Vector2(0,0),ETeam.Team01);
             Instantiate(footman);
+
+            Footman footman01 = new Footman(new Vector2(100, 0), ETeam.Team01);
+            Instantiate(footman01);
         }
 
 		public override void OnSwitchToThisScene()
@@ -38,6 +42,7 @@ namespace JamenGruop_RTS
 		public override void Update()
 		{
 			base.Update();
+            unitSelector.Update();
 		}
 
 		public override void Draw(SpriteBatch spriteBatch)

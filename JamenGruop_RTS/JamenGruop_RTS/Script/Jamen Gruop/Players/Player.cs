@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace JamenGruop_RTS
 {
-	class Goldmine
+	class Player
 	{
+		public int PlayerGold = 0;
+		public int PlayerWood = 0;
+		public int PlayerCurrentFood = 0;
+		public int PlayerMaxFood = 0;
 	}
 }

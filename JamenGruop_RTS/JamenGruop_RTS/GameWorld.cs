@@ -17,8 +17,8 @@ namespace JamenGruop_RTS
 			graphics.PreferredBackBufferHeight = 900;
 
 			GraphicsSetting.SetGraphics(graphics);
-
-			Content.RootDirectory = "Content";
+            IsMouseVisible = true;
+            Content.RootDirectory = "Content";
 		}
 
 		/// <summary>
