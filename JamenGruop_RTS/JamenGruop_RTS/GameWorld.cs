@@ -13,6 +13,9 @@ namespace JamenGruop_RTS
 		public GameWorld()
 		{
 			graphics = new GraphicsDeviceManager(this);
+			graphics.PreferredBackBufferWidth = 1600;
+			graphics.PreferredBackBufferHeight = 900;
+
 			GraphicsSetting.SetGraphics(graphics);
 
 			Content.RootDirectory = "Content";

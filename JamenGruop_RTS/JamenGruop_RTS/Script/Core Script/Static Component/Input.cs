@@ -13,9 +13,108 @@ namespace JamenGruop_RTS
 		// Contains all current use keys
 		private static Dictionary<Keys, InputState> keyStates = new Dictionary<Keys, InputState>();
 
+		public enum MyInputStateEnum { Down, JustPressed, JustReleased }
+		public enum MyMouseButtonsEnum { LeftButton, MiddleButton, RightButton }
+
+		private static Dictionary<MyMouseButtonsEnum, MyInputStateEnum> myMouseStates = new Dictionary<MyMouseButtonsEnum, MyInputStateEnum>();
+
 		public static void Update()
 		{
 			KeysUpdate();
+
+			{
+				MouseState monoMouseState = Mouse.GetState();
+
+				List<MyMouseButtonsEnum> monoPressedMouseButtons = new List<MyMouseButtonsEnum>();
+
+				if (monoMouseState.LeftButton == ButtonState.Pressed) monoPressedMouseButtons.Add(MyMouseButtonsEnum.LeftButton);
+				if (monoMouseState.MiddleButton == ButtonState.Pressed) monoPressedMouseButtons.Add(MyMouseButtonsEnum.MiddleButton);
+				if (monoMouseState.RightButton == ButtonState.Pressed) monoPressedMouseButtons.Add(MyMouseButtonsEnum.RightButton);
+
+				// ====================================================================
+				// Handle mouse button release
+				{
+					var myMouseStatesNew = new Dictionary<MyMouseButtonsEnum, MyInputStateEnum>(Input.myMouseStates);  // Copy states
+
+					foreach (KeyValuePair<MyMouseButtonsEnum, MyInputStateEnum> amaInputStatePairInLoop in Input.myMouseStates)
+					{
+						MyMouseButtonsEnum monoMouseButtonInLoop = amaInputStatePairInLoop.Key;
+
+						if (false == monoPressedMouseButtons.Contains(monoMouseButtonInLoop))
+						{
+							if (amaInputStatePairInLoop.Value == MyInputStateEnum.Down || amaInputStatePairInLoop.Value == MyInputStateEnum.JustPressed)
+							{
+								myMouseStatesNew[monoMouseButtonInLoop] = MyInputStateEnum.JustReleased;
+							}
+							else
+							{
+								myMouseStatesNew.Remove(monoMouseButtonInLoop);
+							}
+						}
+					}
+
+					Input.myMouseStates.Clear();
+					Input.myMouseStates = myMouseStatesNew;
+				}
+
+				// ====================================================================
+
+				// Handle mouse button press
+				{
+					var myMouseStatesNew = new Dictionary<MyMouseButtonsEnum, MyInputStateEnum>(Input.myMouseStates);  // Copy states
+
+					foreach (MyMouseButtonsEnum monoMouseButton in monoPressedMouseButtons)
+					{
+						if (Input.myMouseStates.ContainsKey(monoMouseButton))
+						{
+							myMouseStatesNew[monoMouseButton] = MyInputStateEnum.Down;
+						}
+						else
+						{
+							myMouseStatesNew[monoMouseButton] = MyInputStateEnum.JustPressed;
+						}
+					}
+
+					Input.myMouseStates.Clear();
+					Input.myMouseStates = myMouseStatesNew;
+				}
+			}
+		}
+
+		public static bool MouseButtonJustPressed(MyMouseButtonsEnum monoMouseButton)
+		{
+			if (Input.myMouseStates.TryGetValue(monoMouseButton, out MyInputStateEnum myInputState))
+			{
+				return myInputState == MyInputStateEnum.JustPressed;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		public static bool MouseButtonDown(MyMouseButtonsEnum monoMouseButton)
+		{
+			if (Input.myMouseStates.TryGetValue(monoMouseButton, out MyInputStateEnum myInputState))
+			{
+				return myInputState == MyInputStateEnum.JustPressed || myInputState == MyInputStateEnum.Down;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		public static bool MouseButtonJustReleased(MyMouseButtonsEnum monoMouseButton)
+		{
+			if (Input.myMouseStates.TryGetValue(monoMouseButton, out MyInputStateEnum myInputState))
+			{
+				return myInputState == MyInputStateEnum.JustReleased;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		private static void KeysUpdate()

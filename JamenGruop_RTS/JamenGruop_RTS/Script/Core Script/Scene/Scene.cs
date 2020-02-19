@@ -14,6 +14,7 @@ namespace JamenGruop_RTS
 		protected bool drawEnabled;
 		protected bool isInitialized;
 
+
 		protected List<Component> components = new List<Component>();
 		protected List<Component> gui = new List<Component>();
 		protected List<Component> componentsToBeCreated = new List<Component>();
@@ -48,6 +49,11 @@ namespace JamenGruop_RTS
 			{
 				if (component.IsActive)
 				{
+					if (component.IsFirstUpdate)
+					{
+						component.IsFirstUpdate = false;
+						component.Start();
+					}
 					component.Update();
 				}
 			}
@@ -125,9 +131,8 @@ namespace JamenGruop_RTS
 			{
 				component.Awake();
 			}
-
-            // Add GameObjects
-            this.components.AddRange(awakeCall);
+			// Add GameObjects
+			this.components.AddRange(awakeCall);
 
             this.componentsToBeCreated.Clear();
 		}

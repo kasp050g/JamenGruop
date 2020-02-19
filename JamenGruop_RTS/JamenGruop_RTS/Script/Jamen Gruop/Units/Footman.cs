@@ -11,10 +11,11 @@ namespace JamenGruop_RTS
 	{
         public override void Awake()
         {
-            base.Awake();
-            layerDepth = 1;
+            layerDepth = 0.8f;
             sprite = SpriteContainer.sprite["UnitTest"];
             OriginPositionEnum = OriginPositionEnum.Mid;
+
+            base.Awake();
         }
 
         public override void Start()

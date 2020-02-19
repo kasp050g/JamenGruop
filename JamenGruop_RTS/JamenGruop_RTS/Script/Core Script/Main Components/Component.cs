@@ -17,6 +17,7 @@ namespace JamenGruop_RTS
 		protected float layerDepth = 0;
         protected bool isActive = true;
 		protected Texture2D sprite;
+		protected bool isFirstUpdate = true;
 
 		public OriginPositionEnum OriginPositionEnum { get => originPositionEnum; set => originPositionEnum = value; }
 		public SpriteEffects SpriteEffects { get => spriteEffects; set => spriteEffects = value; }
@@ -25,10 +26,11 @@ namespace JamenGruop_RTS
 		public float LayerDepth { get => layerDepth; set => layerDepth = value; }
 		public bool IsActive { get => isActive; set => isActive = value; }
 		public Texture2D Sprite { get => sprite; set => sprite = value; }
+		public bool IsFirstUpdate { get => isFirstUpdate; set => isFirstUpdate = value; }
 
 		public virtual void Awake()
 		{
-			UpdateOrigin();
+			UpdateOrigin();			
 		}
 		public virtual void Start()
 		{			
