@@ -26,16 +26,26 @@ namespace JamenGruop_RTS
 
 		public void Update()
 		{
+			AttackArrowSelect();
 			UnitSelect();
 			UnitZoneSelect();
 			MoveSelected();
 			BuildSelect();
 		}
+
+		public void UnSelecte()
+		{
+			SelectBuild(false);
+			currentSelectedBuild.Clear();
+			currentSelectedUnits.Clear();
+		}
+
 		public void BuildSelect()
 		{
 			if (Input.MouseButtonJustPressed(Input.MyMouseButtonsEnum.LeftButton))
 			{
-				currentSelectedUnits.Clear();
+				
+				UnSelecte();
 
 				var mousex = Mouse.GetState().Position.X;
 				var mousey = Mouse.GetState().Position.Y;
@@ -55,14 +65,48 @@ namespace JamenGruop_RTS
 						}
 					}
 				}
+				SelectBuild(true);
 			}
 		}
 
+		public void SelectBuild(bool showBuild)
+		{
+			foreach (_KasperTestbuild item in currentSelectedBuild)
+			{
+				item.IsSelect(showBuild);
+			}
+		}
+		public void AttackArrowSelect()
+		{
+			if (Input.MouseButtonJustPressed(Input.MyMouseButtonsEnum.LeftButton))
+			{
+				var mousex = Mouse.GetState().Position.X;
+				var mousey = Mouse.GetState().Position.Y;
+				Vector2 newPosition = new Vector2(mousex, mousey);
+
+				Vector2 worldPosition = Vector2.Transform(newPosition, Matrix.Invert(SceneController.Camera.Transform));
+				var mouseRectangle = new Rectangle((int)worldPosition.X, (int)worldPosition.Y, 1, 1);
+
+				foreach (Component item in SceneController.CurrentScene.Components)
+				{
+					if (item is AttackArrow)
+					{
+						if (mouseRectangle.Intersects((item as AttackArrow).Collider))
+						{
+							Console.WriteLine("Atttack!");
+							(item as AttackArrow).AttackZone();
+						}
+					}
+				}
+
+				UnSelecte();
+			}
+		}
 		public void UnitSelect()
 		{
 			if (Input.MouseButtonJustPressed(Input.MyMouseButtonsEnum.LeftButton))
 			{
-				currentSelectedUnits.Clear();
+				UnSelecte();
 
 				var mousex = Mouse.GetState().Position.X;
 				var mousey = Mouse.GetState().Position.Y;

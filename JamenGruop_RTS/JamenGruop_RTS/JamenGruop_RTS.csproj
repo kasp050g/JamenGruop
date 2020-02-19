@@ -88,6 +88,7 @@
     <Compile Include="Script\Jamen Gruop\Units\UnitSelector.cs" />
     <Compile Include="Script\Jamen Gruop\Worker\Worker.cs" />
     <Compile Include="Script\Jamen Gruop\Zone\AttackArrow.cs" />
+    <Compile Include="Script\Jamen Gruop\Zone\_AttackZone.cs" />
     <Compile Include="Script\Jamen Gruop\Zone\_DefeZone.cs" />
     <Compile Include="Script\Jamen Gruop\Zone\_Zone.cs" />
     <Compile Include="Script\Scenes\TestScene01.cs" />

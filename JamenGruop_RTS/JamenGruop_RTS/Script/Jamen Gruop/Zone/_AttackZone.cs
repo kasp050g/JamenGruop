@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace JamenGruop_RTS
 {
-	public class _DefeZone : GameObject
+	public class _AttackZone : GameObject
 	{
 		public List<Unit> units = new List<Unit>();
 		public _Zone myZone;
 
-		public _DefeZone(_Zone zone)
+		public _AttackZone(_Zone zone)
 		{
 			this.myZone = zone;
 		}
@@ -22,16 +22,16 @@ namespace JamenGruop_RTS
 		{
 			Sprite = SpriteContainer.sprite["Test"];
 			transform.Scale = new Vector2(400, 200);
-			Color = Color.DarkBlue;
+			Color = Color.PaleVioletRed;
 			layerDepth = 0.1f;
-			transform.Position = myZone.Transform.Position + new Vector2(200, 10);
+			transform.Position = myZone.Transform.Position + new Vector2(200, 240);
 			base.Awake();
 		}
 
 		public override void Start()
 		{
 			base.Start();
-			MoveDefeUnitToDefeSpot();
+			MoveAttackunitsToAttackZone();
 		}
 
 		public override void Update()
@@ -44,9 +44,12 @@ namespace JamenGruop_RTS
 			base.Draw(spriteBatch);
 		}
 
-		public void MoveDefeUnitToDefeSpot()
+		public void MoveAttackunitsToAttackZone()
 		{
-			Vector2 newPositon = transform.Position + new Vector2(50,50);
+			Console.WriteLine("Move To attack Zone");
+			Console.WriteLine(units.Count);
+
+			Vector2 newPositon = transform.Position + new Vector2(50, 50);
 			foreach (Unit item in units)
 			{
 				item.NewMovementCommand(newPositon);

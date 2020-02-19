@@ -51,5 +51,11 @@ namespace JamenGruop_RTS
 		{
 			base.Draw(spriteBatch);
 		}
+
+		public void IsSelect(bool showAttacArrow)
+		{
+			Console.WriteLine(showAttacArrow);
+			zone.attackArrow.IsActive = showAttacArrow;
+		}
 	}
 }

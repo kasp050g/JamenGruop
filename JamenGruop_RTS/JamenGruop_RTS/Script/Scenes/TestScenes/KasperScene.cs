@@ -57,6 +57,10 @@ namespace JamenGruop_RTS
 			zone02.units.Add(footman05);
 			zone02.units.Add(footman06);
 			Instantiate(zone02);
+
+			
+
+			zone01.enemyZone = zone02;
 		}
 
 		public override void OnSwitchToThisScene()
