@@ -20,10 +20,10 @@ namespace JamenGruop_RTS
 		protected Vector2 myNewPosition01;
 		protected Vector2 myNewPosition02;
 		protected bool isMoving = false;
+		protected bool isSelected = false;
 
 		protected Unit myTarget;
 		protected ETeam myTeam;
-
 
         protected float moveSpeed = 250;
 
@@ -52,8 +52,6 @@ namespace JamenGruop_RTS
 			this.myTeam = team;
 		}
 
-
-
 		protected virtual void AttackTarget()
 		{
 			if (myTarget != null)
@@ -65,7 +63,6 @@ namespace JamenGruop_RTS
 		public override void Awake()
 		{
 			base.Awake();
-			originPositionEnum = OriginPositionEnum.Mid;
 		}
 
 		public override void Start()
@@ -77,9 +74,6 @@ namespace JamenGruop_RTS
 		public override void Update()
 		{
 			base.Update();
-
-
-			//ClickToMove();
 			Move();
 		}
 
@@ -118,92 +112,8 @@ namespace JamenGruop_RTS
 			// Move the GameObject based on the result from HandleInput, speed and deltaTime.
 			Transform.Position += ((velocity * moveSpeed) * deltatime);
 		}
-		public void NewMovementCommand(Vector2 newPosition)
-		{
-			myNewPosition = newPosition;
-			if (isMoving == false)
-			{
-				Thread myThread01 = new Thread(MoveToPosition);
-
-				myThread01.Start();
-				isMoving = true;
-			}
-		}
-
-		public void MoveToPosition()
-		{
-			Console.WriteLine("start");
-			bool reachDestination = false;
-            float moveOffset = 2;
-			while (reachDestination == false)
-			{
-				if (Vector2.Distance(transform.Position, myNewPosition) < 5f)
-				{
-
-					reachDestination = true;
-					isMoving = false;
-				}
+		
 
 
-				if (transform.Position != myNewPosition)
-				{
-					Vector2 newVelocity = new Vector2();
-                    if(Math.Abs(transform.Position.Y - myNewPosition.Y) < moveOffset)
-                    {
-                        newVelocity += new Vector2(0, 0);
-                    }
-					else if (transform.Position.Y > myNewPosition.Y)
-					{
-						newVelocity += new Vector2(0, -1);
-					}
-					else if (transform.Position.Y < myNewPosition.Y)
-					{
-						newVelocity += new Vector2(0, +1);
-					}
-
-                    if (Math.Abs(transform.Position.X - myNewPosition.X) < moveOffset)
-                    {
-                        newVelocity += new Vector2(0, 0);
-                    }
-                    else if (transform.Position.X > myNewPosition.X)
-					{
-						newVelocity += new Vector2(-1, 0);
-					}
-					else if (transform.Position.X < myNewPosition.X)
-					{
-						newVelocity += new Vector2(+1, 0);
-					}
-					newVelocity.Normalize();
-
-					velocity = newVelocity;
-
-					//if (Vector2.Distance(new Vector2(0, transform.Position.Y), new Vector2(0, myNewPosition.Y)) < 5f)
-					//{
-					//	transform.Position = new Vector2(transform.Position.X, myNewPosition.Y);
-					//}
-
-					//if (Vector2.Distance(new Vector2(transform.Position.X, 0), new Vector2(myNewPosition.X, 0)) < 5f)
-					//{
-					//	transform.Position = new Vector2(myNewPosition.X, transform.Position.Y);
-					//}
-				}
-			}
-
-			velocity = new Vector2(0, 0);
-		}
-
-		public void ClickToMove()
-		{
-			if (Mouse.GetState().LeftButton == ButtonState.Pressed)
-			{
-				var mousex = Mouse.GetState().Position.X;
-				var mousey = Mouse.GetState().Position.Y;
-				Vector2 newPosition = new Vector2(mousex, mousey);
-
-				Vector2 worldPosition = Vector2.Transform(newPosition, Matrix.Invert(SceneController.Camera.Transform));
-
-				NewMovementCommand(worldPosition);
-			}
-		}
 	}
 }

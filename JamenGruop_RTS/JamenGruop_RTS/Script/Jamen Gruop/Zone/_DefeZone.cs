@@ -47,9 +47,9 @@ namespace JamenGruop_RTS
 		public void MoveDefeUnitToDefeSpot()
 		{
 			Vector2 newPositon = transform.Position + new Vector2(50,50);
-			foreach (Unit item in units)
+			foreach (_Kasper_Worker item in units)
 			{
-				item.NewMovementCommand(newPositon);
+				//item.NewMovementCommand(newPositon);
 				newPositon += new Vector2(100, 0);
 			}
 		}

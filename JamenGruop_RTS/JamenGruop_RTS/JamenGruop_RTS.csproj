@@ -75,6 +75,8 @@
     <Compile Include="Script\Jamen Gruop\Resources\Goldmine.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\Lumbermill.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\ResourceBuilding.cs" />
+    <Compile Include="Script\Jamen Gruop\ShowResourceFolder\Resource.cs" />
+    <Compile Include="Script\Jamen Gruop\ShowResourceFolder\ShowResource.cs" />
     <Compile Include="Script\Jamen Gruop\UI\NeedMoreUIStuff.cs" />
     <Compile Include="Script\Jamen Gruop\UI\StartMenu.cs" />
     <Compile Include="Script\Jamen Gruop\Units\Ballista.cs" />
@@ -91,6 +93,12 @@
     <Compile Include="Script\Jamen Gruop\Zone\_AttackZone.cs" />
     <Compile Include="Script\Jamen Gruop\Zone\_DefeZone.cs" />
     <Compile Include="Script\Jamen Gruop\Zone\_Zone.cs" />
+    <Compile Include="Script\Jamen Gruop\_KasperTest\Building\AllBuildings.cs" />
+    <Compile Include="Script\Jamen Gruop\_KasperTest\Building\_Barracks.cs" />
+    <Compile Include="Script\Jamen Gruop\_KasperTest\Building\_Fram.cs" />
+    <Compile Include="Script\Jamen Gruop\_KasperTest\Building\_GoldMine.cs" />
+    <Compile Include="Script\Jamen Gruop\_KasperTest\Building\_LumberMilk.cs" />
+    <Compile Include="Script\Jamen Gruop\_KasperTest\eMoveToSpot.cs" />
     <Compile Include="Script\Jamen Gruop\_KasperTest\_Kasper_eMove_LeftAndRigth.cs" />
     <Compile Include="Script\Jamen Gruop\_KasperTest\_Kasper_eMove_UpAndDown.cs" />
     <Compile Include="Script\Jamen Gruop\_KasperTest\_Kasper_Worker.cs" />

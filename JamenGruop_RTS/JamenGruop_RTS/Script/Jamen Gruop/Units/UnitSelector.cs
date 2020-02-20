@@ -26,7 +26,6 @@ namespace JamenGruop_RTS
 
 		public void Update()
 		{
-			AttackArrowSelect();
 			UnitSelect();
 			UnitZoneSelect();
 			MoveSelected();
@@ -43,8 +42,7 @@ namespace JamenGruop_RTS
 		public void BuildSelect()
 		{
 			if (Input.MouseButtonJustPressed(Input.MyMouseButtonsEnum.LeftButton))
-			{
-				
+			{				
 				UnSelecte();
 
 				var mousex = Mouse.GetState().Position.X;
@@ -76,32 +74,7 @@ namespace JamenGruop_RTS
 				item.IsSelect(showBuild);
 			}
 		}
-		public void AttackArrowSelect()
-		{
-			if (Input.MouseButtonJustPressed(Input.MyMouseButtonsEnum.LeftButton))
-			{
-				var mousex = Mouse.GetState().Position.X;
-				var mousey = Mouse.GetState().Position.Y;
-				Vector2 newPosition = new Vector2(mousex, mousey);
 
-				Vector2 worldPosition = Vector2.Transform(newPosition, Matrix.Invert(SceneController.Camera.Transform));
-				var mouseRectangle = new Rectangle((int)worldPosition.X, (int)worldPosition.Y, 1, 1);
-
-				foreach (Component item in SceneController.CurrentScene.Components)
-				{
-					if (item is AttackArrow)
-					{
-						if (mouseRectangle.Intersects((item as AttackArrow).Collider))
-						{
-							Console.WriteLine("Atttack!");
-							(item as AttackArrow).AttackZone();
-						}
-					}
-				}
-
-				UnSelecte();
-			}
-		}
 		public void UnitSelect()
 		{
 			if (Input.MouseButtonJustPressed(Input.MyMouseButtonsEnum.LeftButton))
@@ -117,12 +90,12 @@ namespace JamenGruop_RTS
 
 				foreach (Component item in SceneController.CurrentScene.Components)
 				{
-					if (item is Unit)
+					if (item is _Kasper_Worker)
 					{
-						if (mouseRectangle.Intersects((item as Unit).UnitCollider))
+						if (mouseRectangle.Intersects((item as _Kasper_Worker).UnitCollider))
 						{
 							Console.Write("howdy");
-							currentSelectedUnits.Add((item as Unit));
+							currentSelectedUnits.Add((item as _Kasper_Worker));
 						}
 					}
 				}
@@ -132,16 +105,77 @@ namespace JamenGruop_RTS
 		{
 			if (Input.MouseButtonJustPressed(Input.MyMouseButtonsEnum.RightButton))
 			{
+				bool hitBuild = false;
 				var mousex = Mouse.GetState().Position.X;
 				var mousey = Mouse.GetState().Position.Y;
 				Vector2 newPosition = new Vector2(mousex, mousey);
 
 				Vector2 worldPosition = Vector2.Transform(newPosition, Matrix.Invert(SceneController.Camera.Transform));
+				var mouseRectangle = new Rectangle((int)worldPosition.X, (int)worldPosition.Y, 1, 1);
 
-				foreach (Unit item in currentSelectedUnits)
+				foreach (Component item in SceneController.CurrentScene.Components)
 				{
-					item.NewMovementCommand(worldPosition);
-					worldPosition += new Vector2(100, 0);
+					if (item is _Barracks)
+					{
+						if (mouseRectangle.Intersects((item as _Barracks).Collider))
+						{
+							Console.Write("Hit _Barracks");
+							hitBuild = true;
+							//currentSelectedUnits.Add((item as _Kasper_Worker));
+							foreach (_Kasper_Worker worker in currentSelectedUnits)
+							{
+								worker.NewMovementCommand(item.Transform.Position, eMoveToSpot.Barracks);
+							}
+						}
+					}
+					if (item is _GoldMine)
+					{
+						if (mouseRectangle.Intersects((item as _GoldMine).Collider))
+						{
+							Console.Write("Hit _GoldMine");
+							hitBuild = true;
+
+							foreach (_Kasper_Worker worker in currentSelectedUnits)
+							{
+								worker.NewMovementCommand(item.Transform.Position, eMoveToSpot.GoldMine);
+							}
+						}
+					}
+					if (item is _LumberMilk)
+					{
+						if (mouseRectangle.Intersects((item as _LumberMilk).Collider))
+						{
+							Console.Write("Hit _LumberMilk");
+							hitBuild = true;
+							//currentSelectedUnits.Add((item as _Kasper_Worker));
+							foreach (_Kasper_Worker worker in currentSelectedUnits)
+							{
+								worker.NewMovementCommand(item.Transform.Position, eMoveToSpot.LumberMilk);
+							}
+						}
+					}
+					if (item is _Fram)
+					{
+						if (mouseRectangle.Intersects((item as _Fram).Collider))
+						{
+							Console.Write("Hit _Fram");
+							hitBuild = true;
+							//currentSelectedUnits.Add((item as _Kasper_Worker));
+							foreach (_Kasper_Worker worker in currentSelectedUnits)
+							{
+								worker.NewMovementCommand(item.Transform.Position, eMoveToSpot.Fram);
+							}
+						}
+					}
+				}
+
+				if(hitBuild == false)
+				{
+					foreach (_Kasper_Worker item in currentSelectedUnits)
+					{
+						item.NewMovementCommand(worldPosition,eMoveToSpot.None);
+						worldPosition += new Vector2(50, 0);
+					}
 				}
 			}
 		}
@@ -173,11 +207,11 @@ namespace JamenGruop_RTS
 			{
 				foreach (Component item in SceneController.CurrentScene.Components)
 				{
-					if (item is Unit)
+					if (item is _Kasper_Worker)
 					{
-						if (showUnit.ShowUnitSelectCollider.Intersects((item as Unit).UnitCollider))
+						if (showUnit.ShowUnitSelectCollider.Intersects((item as _Kasper_Worker).UnitCollider))
 						{
-							currentSelectedUnits.Add((item as Unit));
+							currentSelectedUnits.Add((item as _Kasper_Worker));
 						}
 					}
 				}
@@ -187,5 +221,34 @@ namespace JamenGruop_RTS
 				showUnit.IsActive = false;
 			}
 		}
+
+
+
+		//public void AttackArrowSelect()
+		//{
+		//	if (Input.MouseButtonJustPressed(Input.MyMouseButtonsEnum.LeftButton))
+		//	{
+		//		var mousex = Mouse.GetState().Position.X;
+		//		var mousey = Mouse.GetState().Position.Y;
+		//		Vector2 newPosition = new Vector2(mousex, mousey);
+
+		//		Vector2 worldPosition = Vector2.Transform(newPosition, Matrix.Invert(SceneController.Camera.Transform));
+		//		var mouseRectangle = new Rectangle((int)worldPosition.X, (int)worldPosition.Y, 1, 1);
+
+		//		foreach (Component item in SceneController.CurrentScene.Components)
+		//		{
+		//			if (item is AttackArrow)
+		//			{
+		//				if (mouseRectangle.Intersects((item as AttackArrow).Collider))
+		//				{
+		//					Console.WriteLine("Atttack!");
+		//					(item as AttackArrow).AttackZone();
+		//				}
+		//			}
+		//		}
+
+		//		UnSelecte();
+		//	}
+		//}
 	}
 }

@@ -131,8 +131,19 @@ namespace JamenGruop_RTS
 			{
 				component.Awake();
 			}
+			foreach (Component component in awakeCall)
+			{
+				if(component is GUI)
+				{
+					this.gui.Add(component);
+				}
+				else
+				{
+					this.components.Add(component);
+				}
+			}
 			// Add GameObjects
-			this.components.AddRange(awakeCall);
+			
 
             this.componentsToBeCreated.Clear();
 		}
@@ -146,6 +157,11 @@ namespace JamenGruop_RTS
 			foreach (Component component in this.componentsToBeDestroyed)
 			{
 				this.components.Remove(component);
+			}
+			// Remove GameObjects
+			foreach (Component component in this.componentsToBeDestroyed)
+			{
+				this.gui.Remove(component);
 			}
 			this.componentsToBeDestroyed.Clear();
 		}

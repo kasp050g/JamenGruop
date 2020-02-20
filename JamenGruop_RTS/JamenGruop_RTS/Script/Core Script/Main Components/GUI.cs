@@ -38,7 +38,10 @@ namespace JamenGruop_RTS
 
         public override void Awake()
 		{
-            this.sprite = SpriteContainer.sprite["Test"];
+			if (Sprite == null)
+			{
+				Sprite = SpriteContainer.sprite["Test"];
+			}
 			base.Awake();
 		}
 

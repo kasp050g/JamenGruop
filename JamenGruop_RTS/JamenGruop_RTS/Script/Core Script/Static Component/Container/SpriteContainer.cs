@@ -11,7 +11,7 @@ namespace JamenGruop_RTS
 	public static class SpriteContainer
 	{
 		public static Dictionary<string, Texture2D> sprite = new Dictionary<string, Texture2D>();
-
+		public static SpriteFont normalFont;
 
 		public static void LoadContent(ContentManager content)
 		{
@@ -22,6 +22,14 @@ namespace JamenGruop_RTS
 			AddSprite(content.Load<Texture2D>("Texture/Units/PC_Computer_-_Warcraft_2_-_Footman_74_x_74"), "Footman");
 			AddSprite(content.Load<Texture2D>("Texture/Units/PC_Computer_-_Warcraft_2_-_Peasant_45_x_45"), "Peasant");
 
+			// Builing
+			AddSprite(content.Load<Texture2D>("Texture/Builing/Fram"), "Fram");
+			AddSprite(content.Load<Texture2D>("Texture/Builing/GoldMine"), "GoldMine");
+			AddSprite(content.Load<Texture2D>("Texture/Builing/HomeTown"), "Barracks");
+			AddSprite(content.Load<Texture2D>("Texture/Builing/LumberMilk"), "LumberMilk");
+
+			// font Text
+			normalFont = content.Load<SpriteFont>("Font/NormalFont");
 		}
 
 		private static void AddSprite(Texture2D texture2D, string name)
