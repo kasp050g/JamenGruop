@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JamenGruop_RTS
 {
-    public class _Kasper_Worker : GameObject
+    public class _Kasper_Worker : Unit
     {
         float timer = 0f;
         float interval = 200f;
@@ -20,8 +20,10 @@ namespace JamenGruop_RTS
         //public Texture2D Texture;
         public Rectangle SourceRect;
         public SpriteEffects _spriteEffects = SpriteEffects.None;
+        public _Kasper_eMove_LeftAndRigth eMove_LeftAndRigth;
+        public _Kasper_eMove_UpAndDown eMove_UpAndDown;
 
-        protected Vector2 velocity = new Vector2();
+        //protected Vector2 velocity = new Vector2();
         protected Vector2 velocityPrevious = new Vector2();
         protected Vector2 currentPrevious = new Vector2();
 
@@ -41,10 +43,16 @@ namespace JamenGruop_RTS
             }
         }
 
+        public _Kasper_Worker(Vector2 position, ETeam team) : base(position, team)
+        {
+
+        }
+
         public override void Awake()
         {
             sprite = SpriteContainer.sprite["Peasant"];
             transform.Scale = new Vector2(5, 5);
+            layerDepth = 0.8f;
             base.Awake();
 
         }
@@ -58,9 +66,9 @@ namespace JamenGruop_RTS
         public override void Update()
         {
             base.Update();
-            TestMove();
-            Animate();
 
+            Animate();
+            TestMove();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -89,23 +97,30 @@ namespace JamenGruop_RTS
 
         public void TestMove()
         {
-            velocity = new Vector2(0,0);
-            if (Input.GetKey(Keys.W))
+            if(velocity.Y > 0)
             {
-                velocity += new Vector2(0, -1);
+                eMove_UpAndDown = _Kasper_eMove_UpAndDown.Down;
             }
-            if (Input.GetKey(Keys.S))
+            else if(velocity.Y < 0)
             {
-                velocity += new Vector2(0, 1);
+                eMove_UpAndDown = _Kasper_eMove_UpAndDown.Up;
+            }
+            else
+            {
+                eMove_UpAndDown = _Kasper_eMove_UpAndDown.None;
             }
 
-            if (Input.GetKey(Keys.A))
+            if (velocity.X > 0)
             {
-                velocity += new Vector2(-1, 0);
+                eMove_LeftAndRigth = _Kasper_eMove_LeftAndRigth.Rigth;
             }
-            if (Input.GetKey(Keys.D))
+            else if (velocity.X < 0)
             {
-                velocity += new Vector2(1, 0);
+                eMove_LeftAndRigth = _Kasper_eMove_LeftAndRigth.Left;                
+            }
+            else
+            {
+                eMove_LeftAndRigth = _Kasper_eMove_LeftAndRigth.None;                
             }
         }
 
@@ -134,55 +149,60 @@ namespace JamenGruop_RTS
                 }
             }
 
+
+
             if (velocity != new Vector2(0, 0))
             {
-                //Right
-                if (velocity == new Vector2(1, 0))
+                if (eMove_LeftAndRigth == _Kasper_eMove_LeftAndRigth.Left)
                 {
-                    currentColumn = 2;
-                    _spriteEffects = SpriteEffects.None;
-                }
-                //Left
-                else if (velocity == new Vector2(-1, 0))
-                {
-                    currentColumn = 2;
                     _spriteEffects = SpriteEffects.FlipHorizontally;
                 }
+                else
+                {
+                    _spriteEffects = SpriteEffects.None;
+                }
 
+
+
+                //Right
+                if (eMove_LeftAndRigth == _Kasper_eMove_LeftAndRigth./**/Rigth/**/ /*&&*/&&/*&&*/ eMove_UpAndDown == _Kasper_eMove_UpAndDown./**/None/**/)
+                {
+                    currentColumn = 2;
+                }
+                //Left
+                else if (eMove_LeftAndRigth == _Kasper_eMove_LeftAndRigth./**/Rigth/**/ /*&&*/&&/*&&*/ eMove_UpAndDown == _Kasper_eMove_UpAndDown./**/None/**/)
+                {
+                    currentColumn = 2;                    
+                }
                 //Down
-                if (velocity == new Vector2(0, 1))
+                else if (eMove_LeftAndRigth == _Kasper_eMove_LeftAndRigth./**/None/**/ /*&&*/&&/*&&*/ eMove_UpAndDown == _Kasper_eMove_UpAndDown./**/Down/**/)
                 {
                     currentColumn = 4;
                 }
                 //Up
-                else if (velocity == new Vector2(0, -1))
+                else if (eMove_LeftAndRigth == _Kasper_eMove_LeftAndRigth./**/None/**/ /*&&*/&&/*&&*/ eMove_UpAndDown == _Kasper_eMove_UpAndDown./**/Up/**/)
                 {
                     currentColumn = 0;
                 }
-
                 //Up + Right
-                else if (velocity == new Vector2(1, -1))
+                else if (eMove_LeftAndRigth == _Kasper_eMove_LeftAndRigth./**/Rigth/**/ /*&&*/&&/*&&*/ eMove_UpAndDown == _Kasper_eMove_UpAndDown./**/Up/**/)
                 {
                     currentColumn = 1;
-                    _spriteEffects = SpriteEffects.None;
                 }
                 //Down + Right
-                else if (velocity == new Vector2(1, 1))
+                else if (eMove_LeftAndRigth == _Kasper_eMove_LeftAndRigth./**/Rigth/**/ /*&&*/&&/*&&*/ eMove_UpAndDown == _Kasper_eMove_UpAndDown./**/Down/**/)
                 {
                     currentColumn = 3;
-                    _spriteEffects = SpriteEffects.None;
                 }
                 //Up + Left
-                else if (velocity == new Vector2(-1, -1))
+                else if (eMove_LeftAndRigth == _Kasper_eMove_LeftAndRigth./**/Left/**/ /*&&*/&&/*&&*/ eMove_UpAndDown == _Kasper_eMove_UpAndDown./**/Up/**/)
                 {
                     currentColumn = 1;
-                    _spriteEffects = SpriteEffects.FlipHorizontally;
                 }
                 //Down + Left
-                else if (velocity == new Vector2(-1, 1))
+                else if (eMove_LeftAndRigth == _Kasper_eMove_LeftAndRigth./**/Left/**/ /*&&*/&&/*&&*/ eMove_UpAndDown == _Kasper_eMove_UpAndDown./**/Down/**/)
                 {
                     currentColumn = 3;
-                    _spriteEffects = SpriteEffects.FlipHorizontally;
                 }
 
                 AnimateWalk();

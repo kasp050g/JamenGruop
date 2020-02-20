@@ -9,12 +9,7 @@ namespace JamenGruop_RTS
 {
 	public class Character : GameObject
 	{
-		/// <summary>
-		/// Character speed.
-		/// </summary>
-		protected float moveSpeed = 250;
 
-		protected Vector2 velocity = new Vector2();
 
 		/// <summary>
 		/// Check if the character is alive.

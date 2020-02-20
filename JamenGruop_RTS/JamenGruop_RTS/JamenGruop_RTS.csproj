@@ -91,6 +91,8 @@
     <Compile Include="Script\Jamen Gruop\Zone\_AttackZone.cs" />
     <Compile Include="Script\Jamen Gruop\Zone\_DefeZone.cs" />
     <Compile Include="Script\Jamen Gruop\Zone\_Zone.cs" />
+    <Compile Include="Script\Jamen Gruop\_KasperTest\_Kasper_eMove_LeftAndRigth.cs" />
+    <Compile Include="Script\Jamen Gruop\_KasperTest\_Kasper_eMove_UpAndDown.cs" />
     <Compile Include="Script\Jamen Gruop\_KasperTest\_Kasper_Worker.cs" />
     <Compile Include="Script\Jamen Gruop\_KasperTest\__Kasper_Animate.cs" />
     <Compile Include="Script\Scenes\TestScene01.cs" />

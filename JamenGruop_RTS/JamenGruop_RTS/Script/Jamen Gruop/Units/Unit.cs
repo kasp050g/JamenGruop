@@ -24,7 +24,12 @@ namespace JamenGruop_RTS
 		protected Unit myTarget;
 		protected ETeam myTeam;
 
-		public virtual Rectangle UnitCollider
+
+        protected float moveSpeed = 250;
+
+        protected Vector2 velocity = new Vector2();
+
+        public virtual Rectangle UnitCollider
 		{
 			get
 			{
@@ -129,6 +134,7 @@ namespace JamenGruop_RTS
 		{
 			Console.WriteLine("start");
 			bool reachDestination = false;
+            float moveOffset = 2;
 			while (reachDestination == false)
 			{
 				if (Vector2.Distance(transform.Position, myNewPosition) < 5f)
@@ -142,19 +148,28 @@ namespace JamenGruop_RTS
 				if (transform.Position != myNewPosition)
 				{
 					Vector2 newVelocity = new Vector2();
-					if (transform.Position.Y > myNewPosition.Y)
+                    if(Math.Abs(transform.Position.Y - myNewPosition.Y) < moveOffset)
+                    {
+                        newVelocity += new Vector2(0, 0);
+                    }
+					else if (transform.Position.Y > myNewPosition.Y)
 					{
 						newVelocity += new Vector2(0, -1);
 					}
-					if (transform.Position.Y < myNewPosition.Y)
+					else if (transform.Position.Y < myNewPosition.Y)
 					{
 						newVelocity += new Vector2(0, +1);
 					}
-					if (transform.Position.X > myNewPosition.X)
+
+                    if (Math.Abs(transform.Position.X - myNewPosition.X) < moveOffset)
+                    {
+                        newVelocity += new Vector2(0, 0);
+                    }
+                    else if (transform.Position.X > myNewPosition.X)
 					{
 						newVelocity += new Vector2(-1, 0);
 					}
-					if (transform.Position.X < myNewPosition.X)
+					else if (transform.Position.X < myNewPosition.X)
 					{
 						newVelocity += new Vector2(+1, 0);
 					}
@@ -162,15 +177,15 @@ namespace JamenGruop_RTS
 
 					velocity = newVelocity;
 
-					if (Vector2.Distance(new Vector2(0, transform.Position.Y), new Vector2(0, myNewPosition.Y)) < 5f)
-					{
-						transform.Position = new Vector2(transform.Position.X, myNewPosition.Y);
-					}
+					//if (Vector2.Distance(new Vector2(0, transform.Position.Y), new Vector2(0, myNewPosition.Y)) < 5f)
+					//{
+					//	transform.Position = new Vector2(transform.Position.X, myNewPosition.Y);
+					//}
 
-					if (Vector2.Distance(new Vector2(transform.Position.X, 0), new Vector2(myNewPosition.X, 0)) < 5f)
-					{
-						transform.Position = new Vector2(myNewPosition.X, transform.Position.Y);
-					}
+					//if (Vector2.Distance(new Vector2(transform.Position.X, 0), new Vector2(myNewPosition.X, 0)) < 5f)
+					//{
+					//	transform.Position = new Vector2(myNewPosition.X, transform.Position.Y);
+					//}
 				}
 			}
 
