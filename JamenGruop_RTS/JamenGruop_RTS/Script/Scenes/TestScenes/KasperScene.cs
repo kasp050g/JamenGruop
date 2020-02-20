@@ -52,19 +52,22 @@ namespace JamenGruop_RTS
 
 			// - - - Show UI To Resourece - - - //
 			ShowResource showResourceGold = new ShowResource(gold);
-			showResourceGold.Transform.Position = new Vector2(100, 0);
+			showResourceGold.Transform.Position = new Vector2(400, 10);
 			Instantiate(showResourceGold);
 
 			ShowResource showResourceWood = new ShowResource(wood);
-			showResourceWood.Transform.Position = new Vector2(400, 0);
+			showResourceWood.Transform.Position = new Vector2(700, 10);
 			Instantiate(showResourceWood);
 
 			ShowResource showResourceFood = new ShowResource(food);
-			showResourceFood.Transform.Position = new Vector2(700, 0);
+			showResourceFood.Transform.Position = new Vector2(1000, 10);
 			Instantiate(showResourceFood);
 
-			// - - - Buildings - - - //
-			_Barracks barracks = new _Barracks(gold,wood,food);
+            _ShowUI showUI = new _ShowUI();
+            Instantiate(showUI);
+
+            // - - - Buildings - - - //
+            _Barracks barracks = new _Barracks(gold,wood,food);
 			barracks.Transform.Position = new Vector2(-50, 0);
 			barracks.Transform.Scale = new Vector2(2, 2);
 			Instantiate(barracks);

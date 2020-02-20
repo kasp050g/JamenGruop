@@ -11,7 +11,7 @@ namespace JamenGruop_RTS
 	public class ShowResource : GUI
 	{
 		private SpriteFont font;
-		private Color fontColor = Color.Black;
+		private Color fontColor = Color.White;
 		public string Text { get; set; }
 		public Vector2 FontScale { get; set; }
 		public Resource resource { get; set; }
@@ -42,9 +42,10 @@ namespace JamenGruop_RTS
 			{
 				font = SpriteContainer.normalFont;
 			}
-			transform.Scale = new Vector2(200, 40);
-			FontScale = new Vector2(2, 2);
-			
+			transform.Scale = new Vector2(200, 50);
+			FontScale = new Vector2(0.5f, 0.5f);
+            layerDepth = 0.9f;
+            Color = Color.Black ;
 			base.Awake();
 		}
 
@@ -56,14 +57,14 @@ namespace JamenGruop_RTS
 		public override void Update()
 		{
 			base.Update();
-			Text = resource.Name + ": " + resource.ResourceNumber;
+			Text = resource.ResourceNumber.ToString();
 		}
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
 			base.Draw(spriteBatch);
 
-			var x = (Rectangle.X + (Rectangle.Width / 2)) - (font.MeasureString(Text).X / 2) * FontScale.X;
+			var x = (Rectangle.X + (Rectangle.Width / 2)) - (font.MeasureString(Text).X / 2) * FontScale.X +50;
 			var y = (Rectangle.Y + (Rectangle.Height / 2)) - (font.MeasureString(Text).Y / 2) * FontScale.Y;
 			spriteBatch.DrawString(font, Text, new Vector2(x, y), fontColor, 0f, Vector2.Zero, FontScale, SpriteEffects.None, layerDepth + 0.05f);
 		}

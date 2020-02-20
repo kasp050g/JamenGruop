@@ -29,6 +29,15 @@ namespace JamenGruop_RTS
 			AddSprite(content.Load<Texture2D>("Texture/Builing/HomeTown"), "Barracks");
 			AddSprite(content.Load<Texture2D>("Texture/Builing/LumberMilk"), "LumberMilk");
 
+
+            // UI Icon
+			AddSprite(content.Load<Texture2D>("Texture/UI/Icon/foodIcon"), "foodIcon");
+			AddSprite(content.Load<Texture2D>("Texture/UI/Icon/goldIcon"), "goldIcon");
+			AddSprite(content.Load<Texture2D>("Texture/UI/Icon/woodIcon"), "woodIcon");
+
+
+			//AddSprite(content.Load<Texture2D>(""), "");
+
 			// font Text
 			normalFont = content.Load<SpriteFont>("Font/NormalFont");
 		}
