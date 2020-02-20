@@ -25,8 +25,10 @@ namespace JamenGruop_RTS
         public _Kasper_eMove_UpAndDown eMove_UpAndDown;
 		public eMoveToSpot eMoveTo;
 
-		//protected Vector2 velocity = new Vector2();
-		protected Vector2 velocityPrevious = new Vector2();
+        public bool isSelected = false;
+        public Texture2D whiteCircle;
+        //protected Vector2 velocity = new Vector2();
+        protected Vector2 velocityPrevious = new Vector2();
         protected Vector2 currentPrevious = new Vector2();
 
         bool carryGold = false;
@@ -65,6 +67,7 @@ namespace JamenGruop_RTS
         public override void Awake()
         {
             sprite = SpriteContainer.sprite["Peasant"];
+            whiteCircle = SpriteContainer.sprite["WhiteCircle"];
             transform.Scale = new Vector2(2, 2);
 			
             layerDepth = 0.8f;
@@ -127,6 +130,29 @@ namespace JamenGruop_RTS
 					// LayerDepth
 					this.layerDepth
 				);
+                if(isSelected == true)
+                {
+                    spriteBatch.Draw(
+                        // Texture2D
+                        this.whiteCircle,
+                        // Postion
+                        this.transform.Position,
+                        // Source Rectangle
+                        null,
+                        // Color
+                        new Color(100,100,100,100),
+                        // Rotation
+                        MathHelper.ToRadians(this.transform.Rotation),
+                        // Origin
+                        this.transform.Origin + new Vector2(80,20),
+                        // Scale
+                        new Vector2(0.18f,0.18f),
+                        // SpriteEffects
+                        _spriteEffects,
+                        // LayerDepth
+                        this.layerDepth - 0.01f
+                    );
+                }
             }
         }
 
