@@ -68,10 +68,10 @@ namespace JamenGruop_RTS
                     worker.currentWood += 1;
                 }
                 worker.isWorking = false;
-                MyLumberMilkRoom_Semaphore.Release();
 
                 worker.NewMovementCommand(allBuildings.barracks.Transform.Position, eMoveToSpot.Barracks);
             }
+                MyLumberMilkRoom_Semaphore.Release();
 
 		}
 	}

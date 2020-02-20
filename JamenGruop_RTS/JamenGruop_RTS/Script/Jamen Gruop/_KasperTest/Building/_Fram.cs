@@ -53,11 +53,11 @@ namespace JamenGruop_RTS
         {
             _Kasper_Worker worker = (_Kasper_Worker)o_worker;
 
+                MyFramRoom_Semaphore.WaitOne();
             if (worker.eMoveTo == eMoveToSpot.Fram && worker.isWorking == false)
             {
                 worker.currentGold = 0;
                 worker.currentWood = 0;
-                MyFramRoom_Semaphore.WaitOne();
                 worker.isWorking = true;
                 while (worker.currentFood < worker.maxFood)
                 {
@@ -65,10 +65,10 @@ namespace JamenGruop_RTS
                     worker.currentFood += 1;
                 }
                 worker.isWorking = false;
-                MyFramRoom_Semaphore.Release();
 
                 worker.NewMovementCommand(allBuildings.barracks.Transform.Position, eMoveToSpot.Barracks);
             }
+                MyFramRoom_Semaphore.Release();
         }
     }
 }

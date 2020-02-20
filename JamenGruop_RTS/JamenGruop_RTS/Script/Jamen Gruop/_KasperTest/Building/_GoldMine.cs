@@ -67,10 +67,11 @@ namespace JamenGruop_RTS
                     worker.currentGold += 1;
                 }
                 worker.isWorking = false;
-                MyGoldMineRoom_Semaphore.Release();
+                
 
                 worker.NewMovementCommand(allBuildings.barracks.Transform.Position, eMoveToSpot.Barracks);
             }
-		}
+            MyGoldMineRoom_Semaphore.Release();
+        }
 	}
 }

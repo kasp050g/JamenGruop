@@ -104,6 +104,7 @@ namespace JamenGruop_RTS
 			{
 				carryWood = false;
 			}
+
 		}
 
         public override void Draw(SpriteBatch spriteBatch)
