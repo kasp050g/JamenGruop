@@ -21,6 +21,11 @@ namespace Sprites_01
         private List<Goldmine> goldmines;
         private List<Barrack> barracks;
 
+        private List<Barrack02> barracks02;
+        private List<Goldmine02> goldmines02;
+        private List<Worker02> workers02;
+        private List<Footman02> footmen02;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -70,11 +75,38 @@ namespace Sprites_01
              };
             goldmines = new List<Goldmine>()
             {
-                new Goldmine(Content.Load<Texture2D>("Goldmine02")){Position = new Vector2(900, 100) },
+                new Goldmine(Content.Load<Texture2D>("Goldmine05")){Position = new Vector2(900, 100) },
              };
             barracks = new List<Barrack>()
             {
-                new Barrack(Content.Load<Texture2D>("Buildings12")){Position = new Vector2(1100, 500) },
+                new Barrack(Content.Load<Texture2D>("Buildings14")){Position = new Vector2(1100, 500) },
+             };
+            // Updated versions
+            barracks02 = new List<Barrack02>()
+            {
+                new Barrack02(Content.Load<Texture2D>("Buildings14"),
+                              Content.Load<Texture2D>("Loadbar02"),
+                              Content.Load<Texture2D>("Icons02"),
+                              Content.Load<Texture2D>("Selected04.1"))
+                             { Position = new Vector2(200, 500) },
+             };
+            goldmines02 = new List<Goldmine02>()
+            {
+                new Goldmine02(Content.Load<Texture2D>("Goldmine05"),
+                Content.Load<Texture2D>("Selected04.1"))
+                { Position = new Vector2(1200, 300) },
+             };
+            workers02 = new List<Worker02>()
+            {
+                new Worker02(Content.Load<Texture2D>("Worker02"),
+                Content.Load<Texture2D>("Selected04.1"))
+                {Position = new Vector2(500, 500) },
+             };
+            footmen02 = new List<Footman02>()
+            {
+                new Footman02(Content.Load<Texture2D>("Footman02"),
+                Content.Load<Texture2D>("Selected04.1"))
+                { Position = new Vector2(600, 500) },
              };
         }
 
@@ -105,14 +137,14 @@ namespace Sprites_01
             {
                 footman.Controls(gameTime);
             }
-            foreach (Knight knight in knights)
-            {
-                knight.Controls(gameTime);
-            }
-            foreach (Ballista ballista in ballistas)
-            {
-                ballista.Controls(gameTime);
-            }
+            //foreach (Knight knight in knights)
+            //{
+            //    knight.Controls(gameTime);
+            //}
+            //foreach (Ballista ballista in ballistas)
+            //{
+            //    ballista.Controls(gameTime);
+            //}
             foreach (Goldmine goldmine in goldmines)
             {
                 goldmine.Update(gameTime);
@@ -121,7 +153,23 @@ namespace Sprites_01
             {
                 barrack.Update(gameTime);
             }
-
+            //Updated versions
+            foreach (Barrack02 barrack02 in barracks02)
+            {
+                barrack02.Update(gameTime);
+            }
+            foreach (Goldmine02 goldmine02 in goldmines02)
+            {
+                goldmine02.Update(gameTime);
+            }
+            foreach (Worker02 worker02 in workers02)
+            {
+                worker02.Controls(gameTime);
+            }
+            foreach (Footman02 footman02 in footmen02)
+            {
+                footman02.Controls(gameTime);
+            }
             base.Update(gameTime);
         }
 
@@ -131,7 +179,7 @@ namespace Sprites_01
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Green);
 
             spriteBatch.Begin();
             foreach (Worker worker in workers)
@@ -157,6 +205,23 @@ namespace Sprites_01
             foreach (Barrack barrack in barracks)
             {
                 barrack.Draw(spriteBatch);
+            }
+            //Updated version
+            foreach (Barrack02 barrack02 in barracks02)
+            {
+                barrack02.Draw(spriteBatch);
+            }
+            foreach (Goldmine02 goldmine02 in goldmines02)
+            {
+                goldmine02.Draw(spriteBatch);
+            }
+            foreach (Worker02 worker02 in workers02)
+            {
+                worker02.Draw(spriteBatch);
+            }
+            foreach (Footman02 footman02 in footmen02)
+            {
+                footman02.Draw(spriteBatch);
             }
             spriteBatch.End();
 

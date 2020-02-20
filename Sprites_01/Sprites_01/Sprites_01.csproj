@@ -42,13 +42,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Ballista.cs" />
+    <Compile Include="Barrack02.cs" />
     <Compile Include="Barrack.cs" />
+    <Compile Include="Footman02.cs" />
     <Compile Include="Footman.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Goldmine02.cs" />
     <Compile Include="Goldmine.cs" />
     <Compile Include="Knight.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Worker02.cs" />
     <Compile Include="Worker.cs" />
   </ItemGroup>
   <ItemGroup>
