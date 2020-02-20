@@ -21,8 +21,10 @@ namespace Sprites_01
         int totalRows = 22;
         public Texture2D Texture;
         public Rectangle SourceRect;
+		public SpriteEffects spriteEffects = SpriteEffects.None;
 
-        public Vector2 Position;
+
+		public Vector2 Position;
         public Vector2 Origin;
 
         KeyboardState currentKBState;
@@ -68,14 +70,18 @@ namespace Sprites_01
                 currentColumn = 2;
                 AnimatedWalk(gameTime);
                 Position.X += MoveSpeed;
-            }
+				spriteEffects = SpriteEffects.None;
+
+			}
             //Left
             if (currentKBState.IsKeyDown(Keys.Left) == true)
             {
                 currentColumn = 2;
                 AnimatedWalk(gameTime);
                 Position.X -= MoveSpeed;
-            }
+				spriteEffects = SpriteEffects.FlipHorizontally;
+
+			}
             //Down
             if (currentKBState.IsKeyDown(Keys.Down) == true)
             {
@@ -168,7 +174,7 @@ namespace Sprites_01
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, Position, SourceRect, Color.White, 0f, Origin, 3.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(Texture, Position, SourceRect, Color.White, 0f, Origin, 3.0f, spriteEffects, 0);
         }
     }
 }
