@@ -51,8 +51,8 @@ namespace JamenGruop_RTS
 				return new Rectangle(
 					(int)transform.Position.X - (int)(transform.Origin.X * transform.Scale.X),
 					(int)transform.Position.Y - (int)(transform.Origin.Y * transform.Scale.Y),
-					(int)(sprite.Width / totalColumns * transform.Scale.X),
-					(int)(sprite.Height / totalRows * transform.Scale.Y)
+					(int)((float)sprite.Width / (float)totalColumns * (float)transform.Scale.X),
+					(int)((float)sprite.Height / (float)totalRows * (float)transform.Scale.Y)
 					);
 			}
 		}
@@ -251,9 +251,10 @@ namespace JamenGruop_RTS
             velocityPrevious = currentPrevious;
             currentPrevious = velocity;
             //Player animation del
-            int width = sprite.Width / totalColumns;
-            int height = sprite.Height / totalRows;
-            SourceRect = new Rectangle((int)currentColumn * width, (int)currentRow * height, width, height);
+            float width = sprite.Width / totalColumns;
+            float height = sprite.Height / totalRows;
+            SourceRect = new Rectangle((int)((float)currentColumn * width), (int)((float)currentRow * height), (int)width, (int)height);
+
 
             if (velocity == new Vector2(0,0))
             {

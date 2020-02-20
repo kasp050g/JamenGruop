@@ -56,9 +56,8 @@ namespace JamenGruop_RTS
 			worker.isWorking = true;
 			while (worker.currentFood < worker.maxFood)
 			{
-				Thread.Sleep(100);
+				Thread.Sleep(200);
 				worker.currentFood += 1;
-				Console.WriteLine(worker.currentFood);
 			}
 			worker.isWorking = false;
 			MyFramRoom_Semaphore.Release();

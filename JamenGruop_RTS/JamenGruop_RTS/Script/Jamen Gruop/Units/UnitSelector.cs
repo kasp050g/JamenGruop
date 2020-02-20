@@ -94,8 +94,12 @@ namespace JamenGruop_RTS
 					{
 						if (mouseRectangle.Intersects((item as _Kasper_Worker).UnitCollider))
 						{
-							Console.Write("howdy");
-							currentSelectedUnits.Add((item as _Kasper_Worker));
+                            if((item as _Kasper_Worker).isWorking == false)
+                            {
+                                Console.Write("howdy");
+                                currentSelectedUnits.Add((item as _Kasper_Worker));
+                            }
+
 						}
 					}
 				}
@@ -211,7 +215,10 @@ namespace JamenGruop_RTS
 					{
 						if (showUnit.ShowUnitSelectCollider.Intersects((item as _Kasper_Worker).UnitCollider))
 						{
-							currentSelectedUnits.Add((item as _Kasper_Worker));
+                            if ((item as _Kasper_Worker).isWorking == false)
+                            {
+                                currentSelectedUnits.Add((item as _Kasper_Worker));
+                            }
 						}
 					}
 				}

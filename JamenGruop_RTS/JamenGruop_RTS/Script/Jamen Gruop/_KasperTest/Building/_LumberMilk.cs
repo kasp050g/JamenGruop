@@ -57,9 +57,8 @@ namespace JamenGruop_RTS
 			worker.isWorking = true;
 			while (worker.currentWood < worker.maxWood)
 			{
-				Thread.Sleep(100);
+				Thread.Sleep(200);
 				worker.currentWood += 1;
-				Console.WriteLine(worker.currentWood);
 			}
 			worker.isWorking = false;
 			MyLumberMilkRoom_Semaphore.Release();

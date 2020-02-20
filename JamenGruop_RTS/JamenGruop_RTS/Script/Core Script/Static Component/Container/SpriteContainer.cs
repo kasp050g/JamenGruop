@@ -19,8 +19,8 @@ namespace JamenGruop_RTS
 			AddSprite(content.Load<Texture2D>("Texture/Background/Background2"), "BackgroundTest");
 			AddSprite(content.Load<Texture2D>("Texture/Units/enemyRed1"), "UnitTest");
 
-			AddSprite(content.Load<Texture2D>("Texture/Units/PC_Computer_-_Warcraft_2_-_Footman_74_x_74"), "Footman");
-			AddSprite(content.Load<Texture2D>("Texture/Units/PC_Computer_-_Warcraft_2_-_Peasant_45_x_45"), "Peasant");
+			AddSprite(content.Load<Texture2D>("Texture/Units/PC Computer - Warcraft 2 - Footman 74 x 74"), "Footman");
+			AddSprite(content.Load<Texture2D>("Texture/Units/PC Computer - Warcraft 2 - Peasant 45 x 45"), "Peasant");
 
 			// Builing
 			AddSprite(content.Load<Texture2D>("Texture/Builing/Fram"), "Fram");

@@ -57,9 +57,8 @@ namespace JamenGruop_RTS
 			worker.isWorking = true;
 			while (worker.currentGold < worker.maxGold)
 			{	
-				Thread.Sleep(100);
+				Thread.Sleep(200);
 				worker.currentGold += 1;
-				Console.WriteLine(worker.currentGold);
 			}
 			worker.isWorking = false;
 			MyGoldMineRoom_Semaphore.Release();
