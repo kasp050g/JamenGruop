@@ -14,7 +14,8 @@ namespace JamenGruop_RTS
 	{
 		static Semaphore MyLumberMilkRoom_Semaphore = new Semaphore(0, 2); // Initial count 0, max capacity of 1
 		public AllBuildings allBuildings;
-		public Rectangle Collider
+        public int workSpeed = 200;
+        public Rectangle Collider
 		{
 			get
 			{
@@ -31,7 +32,8 @@ namespace JamenGruop_RTS
 			Sprite = SpriteContainer.sprite["LumberMilk"];
 			originPositionEnum = OriginPositionEnum.BottomMid;
 			base.Awake();
-		}
+            transform.Origin += new Vector2(15, -25);
+        }
 
 		public override void Start()
 		{
@@ -54,16 +56,23 @@ namespace JamenGruop_RTS
 			_Kasper_Worker worker = (_Kasper_Worker)o_worker;
 
 			MyLumberMilkRoom_Semaphore.WaitOne();
-			worker.isWorking = true;
-			while (worker.currentWood < worker.maxWood)
-			{
-				Thread.Sleep(200);
-				worker.currentWood += 1;
-			}
-			worker.isWorking = false;
-			MyLumberMilkRoom_Semaphore.Release();
 
-			worker.NewMovementCommand(allBuildings.barracks.Transform.Position, eMoveToSpot.Barracks);
+            if(worker.eMoveTo == eMoveToSpot.LumberMilk && worker.isWorking == false)
+            {
+                worker.currentFood = 0;
+                worker.currentGold = 0;
+                worker.isWorking = true;
+                while (worker.currentWood < worker.maxWood)
+                {
+                    Thread.Sleep(workSpeed);
+                    worker.currentWood += 1;
+                }
+                worker.isWorking = false;
+                MyLumberMilkRoom_Semaphore.Release();
+
+                worker.NewMovementCommand(allBuildings.barracks.Transform.Position, eMoveToSpot.Barracks);
+            }
+
 		}
 	}
 }

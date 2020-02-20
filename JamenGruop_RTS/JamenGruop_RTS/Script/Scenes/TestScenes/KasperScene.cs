@@ -94,22 +94,14 @@ namespace JamenGruop_RTS
 			lumberMilk.allBuildings = allBuildings;
 			goldMine.allBuildings = allBuildings;
 
-			// - - - Workers - - - //
-			_Kasper_Worker _Kasper_Worker01 = new _Kasper_Worker(new Vector2(0, 0), ETeam.Team01);
-			_Kasper_Worker01.allBuildings = allBuildings;
-			Instantiate(_Kasper_Worker01);
+            // - - - Workers - - - //
+            for (int i = 0; i < 6; i++)
+            {
+                _Kasper_Worker _Kasper_Worker01 = new _Kasper_Worker(new Vector2(0, 0), ETeam.Team01);
+                _Kasper_Worker01.allBuildings = allBuildings;
+                Instantiate(_Kasper_Worker01);
+            }
 
-			_Kasper_Worker _Kasper_Worker02 = new _Kasper_Worker(new Vector2(5, 0), ETeam.Team01);
-			_Kasper_Worker02.allBuildings = allBuildings;
-			Instantiate(_Kasper_Worker02);
-
-			_Kasper_Worker _Kasper_Worker03 = new _Kasper_Worker(new Vector2(5, 0), ETeam.Team01);
-			_Kasper_Worker03.allBuildings = allBuildings;
-			Instantiate(_Kasper_Worker03);
-
-			_Kasper_Worker _Kasper_Worker04 = new _Kasper_Worker(new Vector2(5, 0), ETeam.Team01);
-			_Kasper_Worker04.allBuildings = allBuildings;
-			Instantiate(_Kasper_Worker04);
-		}
+        }
 	}
 }

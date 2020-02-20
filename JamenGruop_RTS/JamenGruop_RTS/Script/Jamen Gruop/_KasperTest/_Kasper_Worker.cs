@@ -105,9 +105,9 @@ namespace JamenGruop_RTS
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-			if(isWorking == false)
-			{
-				spriteBatch.Draw(
+            if (isWorking == false)
+            {
+                spriteBatch.Draw(
 					// Texture2D
 					this.sprite,
 					// Postion
@@ -127,7 +127,7 @@ namespace JamenGruop_RTS
 					// LayerDepth
 					this.layerDepth
 				);
-			}
+            }
         }
 
 		public void NewMovementCommand(Vector2 newPosition, eMoveToSpot eMoveTo)
@@ -289,7 +289,7 @@ namespace JamenGruop_RTS
                     currentColumn = 2;
                 }
                 //Left
-                else if (eMove_LeftAndRigth == _Kasper_eMove_LeftAndRigth./**/Rigth/**/ /*&&*/&&/*&&*/ eMove_UpAndDown == _Kasper_eMove_UpAndDown./**/None/**/)
+                else if (eMove_LeftAndRigth == _Kasper_eMove_LeftAndRigth./**/Left/**/ /*&&*/&&/*&&*/ eMove_UpAndDown == _Kasper_eMove_UpAndDown./**/None/**/)
                 {
                     currentColumn = 2;                    
                 }

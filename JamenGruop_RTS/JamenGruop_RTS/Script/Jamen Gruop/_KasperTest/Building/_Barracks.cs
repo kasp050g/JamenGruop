@@ -38,7 +38,7 @@ namespace JamenGruop_RTS
 			Sprite = SpriteContainer.sprite["Barracks"];
 			originPositionEnum = OriginPositionEnum.BottomMid;
 			base.Awake();
-			
+            transform.Origin += new Vector2(30, -20);			
 		}
 
 		public override void Start()
