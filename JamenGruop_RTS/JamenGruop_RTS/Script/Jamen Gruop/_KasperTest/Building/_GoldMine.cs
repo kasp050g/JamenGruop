@@ -53,7 +53,8 @@ namespace JamenGruop_RTS
 
 		public void GoInToGoldMine(object o_worker)
 		{
-			_Kasper_Worker worker = (_Kasper_Worker)o_worker;
+            bool didWork = false;
+            _Kasper_Worker worker = (_Kasper_Worker)o_worker;
 
 			MyGoldMineRoom_Semaphore.WaitOne();
             if (worker.eMoveTo == eMoveToSpot.GoldMine && worker.isWorking == false)
@@ -66,12 +67,17 @@ namespace JamenGruop_RTS
                     Thread.Sleep(workSpeed);
                     worker.currentGold += 1;
                 }
+                Console.WriteLine("Work done in " + worker.eMoveTo + " got " + worker.currentGold);
                 worker.isWorking = false;
-                
 
-                worker.NewMovementCommand(allBuildings.barracks.Transform.Position, eMoveToSpot.Barracks);
+                didWork = true;
+                
             }
             MyGoldMineRoom_Semaphore.Release();
+            if (didWork == true)
+            {
+                worker.NewMovementCommand(allBuildings.barracks.Transform.Position, eMoveToSpot.Barracks);
+            }
         }
 	}
 }

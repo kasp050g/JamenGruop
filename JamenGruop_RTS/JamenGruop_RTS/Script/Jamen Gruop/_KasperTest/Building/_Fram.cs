@@ -51,9 +51,10 @@ namespace JamenGruop_RTS
 
         public void GoInToFram(object o_worker)
         {
+            bool didWork = false;
             _Kasper_Worker worker = (_Kasper_Worker)o_worker;
 
-                MyFramRoom_Semaphore.WaitOne();
+            MyFramRoom_Semaphore.WaitOne();
             if (worker.eMoveTo == eMoveToSpot.Fram && worker.isWorking == false)
             {
                 worker.currentGold = 0;
@@ -64,11 +65,17 @@ namespace JamenGruop_RTS
                     Thread.Sleep(workSpeed);
                     worker.currentFood += 1;
                 }
+                Console.WriteLine("Work done in " + worker.eMoveTo + " got " + worker.currentFood);
                 worker.isWorking = false;
 
+                didWork = true;
+
+            }
+            MyFramRoom_Semaphore.Release();
+            if (didWork == true)
+            {
                 worker.NewMovementCommand(allBuildings.barracks.Transform.Position, eMoveToSpot.Barracks);
             }
-                MyFramRoom_Semaphore.Release();
         }
     }
 }
