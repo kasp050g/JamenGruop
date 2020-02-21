@@ -70,21 +70,25 @@ namespace JamenGruop_RTS
             _Barracks barracks = new _Barracks(gold,wood,food);
 			barracks.Transform.Position = new Vector2(-50, 0);
 			barracks.Transform.Scale = new Vector2(2, 2);
+			barracks.LayerDepth = 0.1f;
 			Instantiate(barracks);
 
 			_Fram fram = new _Fram();
 			fram.Transform.Position = new Vector2(350, -300);
 			fram.Transform.Scale = new Vector2(2, 2);
+			fram.LayerDepth = 0.1f;
 			Instantiate(fram);
 
 			_LumberMilk lumberMilk = new _LumberMilk();
 			lumberMilk.Transform.Position = new Vector2(-450, 350);
 			lumberMilk.Transform.Scale = new Vector2(2, 2);
+			lumberMilk.LayerDepth = 0.1f;
 			Instantiate(lumberMilk);
 
 			_GoldMine goldMine = new _GoldMine();
 			goldMine.Transform.Position = new Vector2(350, 350);
 			goldMine.Transform.Scale = new Vector2(2, 2);
+			goldMine.LayerDepth = 0.1f;
 			Instantiate(goldMine);
 
 			allBuildings.barracks = barracks;
@@ -104,7 +108,24 @@ namespace JamenGruop_RTS
                 _Kasper_Worker01.allBuildings = allBuildings;
                 Instantiate(_Kasper_Worker01);
             }
+			MakeGrass();
 
-        }
+		}
+
+		public void MakeGrass()
+		{
+			
+
+			for (int x = 0; x < 100; x++)
+			{
+				for (int y = 0; y < 100; y++)
+				{
+					_Grass grass = new _Grass();
+					grass.Transform.Position = new Vector2(-1500, -500) + new Vector2(32 * x,32 * y);
+					grass.LayerDepth = 0;
+					Instantiate(grass);
+				}
+			}
+		}
 	}
 }

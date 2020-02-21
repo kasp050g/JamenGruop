@@ -99,6 +99,7 @@
     <Compile Include="Script\Jamen Gruop\_KasperTest\Building\_GoldMine.cs" />
     <Compile Include="Script\Jamen Gruop\_KasperTest\Building\_LumberMilk.cs" />
     <Compile Include="Script\Jamen Gruop\_KasperTest\eMoveToSpot.cs" />
+    <Compile Include="Script\Jamen Gruop\_KasperTest\_Grass.cs" />
     <Compile Include="Script\Jamen Gruop\_KasperTest\_Kasper_eMove_LeftAndRigth.cs" />
     <Compile Include="Script\Jamen Gruop\_KasperTest\_Kasper_eMove_UpAndDown.cs" />
     <Compile Include="Script\Jamen Gruop\_KasperTest\_Kasper_Worker.cs" />

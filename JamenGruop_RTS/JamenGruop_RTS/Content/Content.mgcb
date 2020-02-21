@@ -32,6 +32,18 @@
 /processorParam:TextureFormat=Color
 /build:Texture/Background/Background2.png
 
+#begin Texture/Background/Grass.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Texture/Background/Grass.png
+
 #begin Texture/Builing/Fram.png
 /importer:TextureImporter
 /processor:TextureProcessor
