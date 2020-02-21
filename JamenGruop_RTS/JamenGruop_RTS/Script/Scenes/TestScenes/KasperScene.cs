@@ -52,19 +52,22 @@ namespace JamenGruop_RTS
 
 			// - - - Show UI To Resourece - - - //
 			ShowResource showResourceGold = new ShowResource(gold);
-			showResourceGold.Transform.Position = new Vector2(100, 0);
+			showResourceGold.Transform.Position = new Vector2(400, 10);
 			Instantiate(showResourceGold);
 
 			ShowResource showResourceWood = new ShowResource(wood);
-			showResourceWood.Transform.Position = new Vector2(400, 0);
+			showResourceWood.Transform.Position = new Vector2(700, 10);
 			Instantiate(showResourceWood);
 
 			ShowResource showResourceFood = new ShowResource(food);
-			showResourceFood.Transform.Position = new Vector2(700, 0);
+			showResourceFood.Transform.Position = new Vector2(1000, 10);
 			Instantiate(showResourceFood);
 
-			// - - - Buildings - - - //
-			_Barracks barracks = new _Barracks(gold,wood,food);
+            _ShowUI showUI = new _ShowUI();
+            Instantiate(showUI);
+
+            // - - - Buildings - - - //
+            _Barracks barracks = new _Barracks(gold,wood,food);
 			barracks.Transform.Position = new Vector2(-50, 0);
 			barracks.Transform.Scale = new Vector2(2, 2);
 			Instantiate(barracks);
@@ -94,22 +97,14 @@ namespace JamenGruop_RTS
 			lumberMilk.allBuildings = allBuildings;
 			goldMine.allBuildings = allBuildings;
 
-			// - - - Workers - - - //
-			_Kasper_Worker _Kasper_Worker01 = new _Kasper_Worker(new Vector2(0, 0), ETeam.Team01);
-			_Kasper_Worker01.allBuildings = allBuildings;
-			Instantiate(_Kasper_Worker01);
+            // - - - Workers - - - //
+            for (int i = 0; i < 6; i++)
+            {
+                _Kasper_Worker _Kasper_Worker01 = new _Kasper_Worker(new Vector2(0, 0), ETeam.Team01);
+                _Kasper_Worker01.allBuildings = allBuildings;
+                Instantiate(_Kasper_Worker01);
+            }
 
-			_Kasper_Worker _Kasper_Worker02 = new _Kasper_Worker(new Vector2(5, 0), ETeam.Team01);
-			_Kasper_Worker02.allBuildings = allBuildings;
-			Instantiate(_Kasper_Worker02);
-
-			_Kasper_Worker _Kasper_Worker03 = new _Kasper_Worker(new Vector2(5, 0), ETeam.Team01);
-			_Kasper_Worker03.allBuildings = allBuildings;
-			Instantiate(_Kasper_Worker03);
-
-			_Kasper_Worker _Kasper_Worker04 = new _Kasper_Worker(new Vector2(5, 0), ETeam.Team01);
-			_Kasper_Worker04.allBuildings = allBuildings;
-			Instantiate(_Kasper_Worker04);
-		}
+        }
 	}
 }

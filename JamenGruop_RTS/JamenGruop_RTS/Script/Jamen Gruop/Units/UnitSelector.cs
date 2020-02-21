@@ -34,6 +34,10 @@ namespace JamenGruop_RTS
 
 		public void UnSelecte()
 		{
+            foreach (Unit item in currentSelectedUnits)
+            {
+                (item as _Kasper_Worker).isSelected = false;
+            }
 			SelectBuild(false);
 			currentSelectedBuild.Clear();
 			currentSelectedUnits.Clear();
@@ -94,8 +98,12 @@ namespace JamenGruop_RTS
 					{
 						if (mouseRectangle.Intersects((item as _Kasper_Worker).UnitCollider))
 						{
-							Console.Write("howdy");
-							currentSelectedUnits.Add((item as _Kasper_Worker));
+                            if((item as _Kasper_Worker).isWorking == false)
+                            {
+                                Console.Write("howdy");
+                                currentSelectedUnits.Add((item as _Kasper_Worker));
+                                (item as _Kasper_Worker).isSelected = true;
+                            }
 						}
 					}
 				}
@@ -205,13 +213,18 @@ namespace JamenGruop_RTS
 			}
 			if (Input.MouseButtonJustReleased(Input.MyMouseButtonsEnum.LeftButton) && unitZoneSelectReleased == true)
 			{
-				foreach (Component item in SceneController.CurrentScene.Components)
+                UnSelecte();
+                foreach (Component item in SceneController.CurrentScene.Components)
 				{
 					if (item is _Kasper_Worker)
 					{
 						if (showUnit.ShowUnitSelectCollider.Intersects((item as _Kasper_Worker).UnitCollider))
 						{
-							currentSelectedUnits.Add((item as _Kasper_Worker));
+                            if ((item as _Kasper_Worker).isWorking == false)
+                            {
+                                currentSelectedUnits.Add((item as _Kasper_Worker));
+                                (item as _Kasper_Worker).isSelected = true;
+                            }
 						}
 					}
 				}

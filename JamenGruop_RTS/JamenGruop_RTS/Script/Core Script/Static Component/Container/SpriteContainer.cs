@@ -19,14 +19,24 @@ namespace JamenGruop_RTS
 			AddSprite(content.Load<Texture2D>("Texture/Background/Background2"), "BackgroundTest");
 			AddSprite(content.Load<Texture2D>("Texture/Units/enemyRed1"), "UnitTest");
 
-			AddSprite(content.Load<Texture2D>("Texture/Units/PC_Computer_-_Warcraft_2_-_Footman_74_x_74"), "Footman");
-			AddSprite(content.Load<Texture2D>("Texture/Units/PC_Computer_-_Warcraft_2_-_Peasant_45_x_45"), "Peasant");
+			AddSprite(content.Load<Texture2D>("Texture/Units/PC Computer - Warcraft 2 - Footman 74 x 74"), "Footman");
+			AddSprite(content.Load<Texture2D>("Texture/Units/PC Computer - Warcraft 2 - Peasant 45 x 45"), "Peasant");
+			AddSprite(content.Load<Texture2D>("Texture/Units/white circle"), "WhiteCircle");
 
 			// Builing
 			AddSprite(content.Load<Texture2D>("Texture/Builing/Fram"), "Fram");
 			AddSprite(content.Load<Texture2D>("Texture/Builing/GoldMine"), "GoldMine");
 			AddSprite(content.Load<Texture2D>("Texture/Builing/HomeTown"), "Barracks");
 			AddSprite(content.Load<Texture2D>("Texture/Builing/LumberMilk"), "LumberMilk");
+
+
+            // UI Icon
+			AddSprite(content.Load<Texture2D>("Texture/UI/Icon/foodIcon"), "foodIcon");
+			AddSprite(content.Load<Texture2D>("Texture/UI/Icon/goldIcon"), "goldIcon");
+			AddSprite(content.Load<Texture2D>("Texture/UI/Icon/woodIcon"), "woodIcon");
+
+
+			//AddSprite(content.Load<Texture2D>(""), "");
 
 			// font Text
 			normalFont = content.Load<SpriteFont>("Font/NormalFont");

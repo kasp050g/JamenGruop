@@ -25,8 +25,10 @@ namespace JamenGruop_RTS
         public _Kasper_eMove_UpAndDown eMove_UpAndDown;
 		public eMoveToSpot eMoveTo;
 
-		//protected Vector2 velocity = new Vector2();
-		protected Vector2 velocityPrevious = new Vector2();
+        public bool isSelected = false;
+        public Texture2D whiteCircle;
+        //protected Vector2 velocity = new Vector2();
+        protected Vector2 velocityPrevious = new Vector2();
         protected Vector2 currentPrevious = new Vector2();
 
         bool carryGold = false;
@@ -51,8 +53,8 @@ namespace JamenGruop_RTS
 				return new Rectangle(
 					(int)transform.Position.X - (int)(transform.Origin.X * transform.Scale.X),
 					(int)transform.Position.Y - (int)(transform.Origin.Y * transform.Scale.Y),
-					(int)(sprite.Width / totalColumns * transform.Scale.X),
-					(int)(sprite.Height / totalRows * transform.Scale.Y)
+					(int)((float)sprite.Width / (float)totalColumns * (float)transform.Scale.X),
+					(int)((float)sprite.Height / (float)totalRows * (float)transform.Scale.Y)
 					);
 			}
 		}
@@ -65,6 +67,7 @@ namespace JamenGruop_RTS
         public override void Awake()
         {
             sprite = SpriteContainer.sprite["Peasant"];
+            whiteCircle = SpriteContainer.sprite["WhiteCircle"];
             transform.Scale = new Vector2(2, 2);
 			
             layerDepth = 0.8f;
@@ -101,13 +104,14 @@ namespace JamenGruop_RTS
 			{
 				carryWood = false;
 			}
+
 		}
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-			if(isWorking == false)
-			{
-				spriteBatch.Draw(
+            if (isWorking == false)
+            {
+                spriteBatch.Draw(
 					// Texture2D
 					this.sprite,
 					// Postion
@@ -127,7 +131,30 @@ namespace JamenGruop_RTS
 					// LayerDepth
 					this.layerDepth
 				);
-			}
+                if(isSelected == true)
+                {
+                    spriteBatch.Draw(
+                        // Texture2D
+                        this.whiteCircle,
+                        // Postion
+                        this.transform.Position,
+                        // Source Rectangle
+                        null,
+                        // Color
+                        new Color(100,100,100,100),
+                        // Rotation
+                        MathHelper.ToRadians(this.transform.Rotation),
+                        // Origin
+                        this.transform.Origin + new Vector2(80,20),
+                        // Scale
+                        new Vector2(0.18f,0.18f),
+                        // SpriteEffects
+                        _spriteEffects,
+                        // LayerDepth
+                        this.layerDepth - 0.01f
+                    );
+                }
+            }
         }
 
 		public void NewMovementCommand(Vector2 newPosition, eMoveToSpot eMoveTo)
@@ -251,9 +278,10 @@ namespace JamenGruop_RTS
             velocityPrevious = currentPrevious;
             currentPrevious = velocity;
             //Player animation del
-            int width = sprite.Width / totalColumns;
-            int height = sprite.Height / totalRows;
-            SourceRect = new Rectangle((int)currentColumn * width, (int)currentRow * height, width, height);
+            float width = sprite.Width / totalColumns;
+            float height = sprite.Height / totalRows;
+            SourceRect = new Rectangle((int)((float)currentColumn * width), (int)((float)currentRow * height), (int)width, (int)height);
+
 
             if (velocity == new Vector2(0,0))
             {
@@ -288,7 +316,7 @@ namespace JamenGruop_RTS
                     currentColumn = 2;
                 }
                 //Left
-                else if (eMove_LeftAndRigth == _Kasper_eMove_LeftAndRigth./**/Rigth/**/ /*&&*/&&/*&&*/ eMove_UpAndDown == _Kasper_eMove_UpAndDown./**/None/**/)
+                else if (eMove_LeftAndRigth == _Kasper_eMove_LeftAndRigth./**/Left/**/ /*&&*/&&/*&&*/ eMove_UpAndDown == _Kasper_eMove_UpAndDown./**/None/**/)
                 {
                     currentColumn = 2;                    
                 }

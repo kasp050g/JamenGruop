@@ -33,6 +33,7 @@ namespace JamenGruop_RTS
 			transform.Scale = new Vector2(100, 100);
 			Color = new Color(100, 100, 100, 100);
 			layerDepth = 1;
+            IsActive = false;
 			base.Awake();
 		}
 

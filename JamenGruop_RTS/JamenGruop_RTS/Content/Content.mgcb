@@ -92,6 +92,42 @@
 /processorParam:TextureFormat=Color
 /build:Texture/Pixel.png
 
+#begin Texture/UI/Icon/foodIcon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Texture/UI/Icon/foodIcon.png
+
+#begin Texture/UI/Icon/goldIcon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Texture/UI/Icon/goldIcon.png
+
+#begin Texture/UI/Icon/woodIcon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Texture/UI/Icon/woodIcon.png
+
 #begin Texture/Units/enemyRed1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -104,7 +140,7 @@
 /processorParam:TextureFormat=Color
 /build:Texture/Units/enemyRed1.png
 
-#begin Texture/Units/PC_Computer_-_Warcraft_2_-_Footman_74_x_74.png
+#begin Texture/Units/PC Computer - Warcraft 2 - Footman 74 x 74.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -114,9 +150,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Texture/Units/PC_Computer_-_Warcraft_2_-_Footman_74_x_74.png
+/build:Texture/Units/PC Computer - Warcraft 2 - Footman 74 x 74.png
 
-#begin Texture/Units/PC_Computer_-_Warcraft_2_-_Peasant_45_x_45.png
+#begin Texture/Units/PC Computer - Warcraft 2 - Peasant 45 x 45.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -126,5 +162,17 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Texture/Units/PC_Computer_-_Warcraft_2_-_Peasant_45_x_45.png
+/build:Texture/Units/PC Computer - Warcraft 2 - Peasant 45 x 45.png
+
+#begin Texture/Units/white circle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Texture/Units/white circle.png
 

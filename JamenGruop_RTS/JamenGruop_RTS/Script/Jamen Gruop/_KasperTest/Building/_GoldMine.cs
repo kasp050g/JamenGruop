@@ -14,6 +14,7 @@ namespace JamenGruop_RTS
 	{
 		static Semaphore MyGoldMineRoom_Semaphore = new Semaphore(0, 2); // Initial count 0, max capacity of 1
 		public AllBuildings allBuildings;
+        public int workSpeed = 200;
 		public Rectangle Collider
 		{
 			get
@@ -31,7 +32,8 @@ namespace JamenGruop_RTS
 			Sprite = SpriteContainer.sprite["GoldMine"];
 			originPositionEnum = OriginPositionEnum.BottomLeft;
 			base.Awake();
-		}
+            transform.Origin += new Vector2(12, -25);
+        }
 
 		public override void Start()
 		{
@@ -51,20 +53,31 @@ namespace JamenGruop_RTS
 
 		public void GoInToGoldMine(object o_worker)
 		{
-			_Kasper_Worker worker = (_Kasper_Worker)o_worker;
+            bool didWork = false;
+            _Kasper_Worker worker = (_Kasper_Worker)o_worker;
 
 			MyGoldMineRoom_Semaphore.WaitOne();
-			worker.isWorking = true;
-			while (worker.currentGold < worker.maxGold)
-			{	
-				Thread.Sleep(100);
-				worker.currentGold += 1;
-				Console.WriteLine(worker.currentGold);
-			}
-			worker.isWorking = false;
-			MyGoldMineRoom_Semaphore.Release();
+            if (worker.eMoveTo == eMoveToSpot.GoldMine && worker.isWorking == false)
+            {
+                worker.currentFood = 0;
+                worker.currentWood = 0;
+                worker.isWorking = true;
+                while (worker.currentGold < worker.maxGold)
+                {
+                    Thread.Sleep(workSpeed);
+                    worker.currentGold += 1;
+                }
+                Console.WriteLine("Work done in " + worker.eMoveTo + " got " + worker.currentGold);
+                worker.isWorking = false;
 
-			worker.NewMovementCommand(allBuildings.barracks.Transform.Position, eMoveToSpot.Barracks);
-		}
+                didWork = true;
+                
+            }
+            MyGoldMineRoom_Semaphore.Release();
+            if (didWork == true)
+            {
+                worker.NewMovementCommand(allBuildings.barracks.Transform.Position, eMoveToSpot.Barracks);
+            }
+        }
 	}
 }
