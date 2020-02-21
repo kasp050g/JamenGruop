@@ -32,7 +32,7 @@ namespace JamenGruop_RTS
 			// TODO: Add your initialization logic here
 
 			base.Initialize();
-			Global.Initialize();
+			Global.Initialize(Content);
 		}
 
 		/// <summary>

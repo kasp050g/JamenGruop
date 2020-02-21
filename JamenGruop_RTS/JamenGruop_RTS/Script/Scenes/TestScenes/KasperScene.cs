@@ -21,7 +21,6 @@ namespace JamenGruop_RTS
 		public override void Initialize()
 		{
 			base.Initialize();
-            SceneController.eCurrentTest = eCurrentTestScene.Kasper;
 			MakeNewObject();
 		}
 

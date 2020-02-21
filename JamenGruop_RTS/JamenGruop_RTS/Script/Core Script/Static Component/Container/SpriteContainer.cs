@@ -22,6 +22,9 @@ namespace JamenGruop_RTS
 			AddSprite(content.Load<Texture2D>("Texture/Units/PC Computer - Warcraft 2 - Footman 74 x 74"), "Footman");
 			AddSprite(content.Load<Texture2D>("Texture/Units/PC Computer - Warcraft 2 - Peasant 45 x 45"), "Peasant");
 			AddSprite(content.Load<Texture2D>("Texture/Units/white circle"), "WhiteCircle");
+			AddSprite(content.Load<Texture2D>("Texture/Units/WorkerM"), "WMineFood");
+			AddSprite(content.Load<Texture2D>("Texture/Units/WorkerI"), "WIdle");
+			AddSprite(content.Load<Texture2D>("Texture/Units/WorkerL"), "WLumber");
 
 			// Builing
 			AddSprite(content.Load<Texture2D>("Texture/Builing/Fram"), "Fram");

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace JamenGruop_RTS
@@ -36,7 +37,7 @@ namespace JamenGruop_RTS
 		{
             foreach (Unit item in currentSelectedUnits)
             {
-                (item as _Kasper_Worker).isSelected = false;
+                (item as _Kasper_Worker).IsSelected = false;
             }
 			SelectBuild(false);
 			currentSelectedBuild.Clear();
@@ -102,7 +103,7 @@ namespace JamenGruop_RTS
                             {
                                 Console.Write("howdy");
                                 currentSelectedUnits.Add((item as _Kasper_Worker));
-                                (item as _Kasper_Worker).isSelected = true;
+                                (item as _Kasper_Worker).IsSelected = true;
                             }
 						}
 					}
@@ -223,7 +224,7 @@ namespace JamenGruop_RTS
                             if ((item as _Kasper_Worker).isWorking == false)
                             {
                                 currentSelectedUnits.Add((item as _Kasper_Worker));
-                                (item as _Kasper_Worker).isSelected = true;
+                                (item as _Kasper_Worker).IsSelected = true;
                             }
 						}
 					}

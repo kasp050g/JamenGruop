@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace JamenGruop_RTS
@@ -18,6 +19,16 @@ namespace JamenGruop_RTS
 		private float recruitTimer = 10f;
 		private Player owner = new Player();
 		private Unit tmp;
+
+		private Mutex m = new Mutex();
+
+		public Barracks(Vector2 pos)
+		{
+			sprite = SpriteContainer.sprite["Barracks"];
+
+			Transform.Position = pos;
+			Transform.Scale = new Vector2(2, 2);
+		}
 
 		public Barracks(int positionX, int positionY, ETeam team, Player owner)
 		{
@@ -60,6 +71,23 @@ namespace JamenGruop_RTS
 			createdUnits.Add(tmp);
 
 			SceneController.CurrentScene.Instantiate(tmp);
+		}
+
+		public void DeliverResource(Worker worker)
+		{
+			m.WaitOne();
+
+			Thread.Sleep(750);
+
+			worker.Owner.PlayerGold += worker.WorkerResourceValue;
+			worker.WorkerResourceValue = 0;
+			worker.WorkerHasDeliveredResource = true;
+			worker.WorkerState = EWorkerStates.MovingToTarget;
+			worker.Sprite = SpriteContainer.sprite["WIdle"];
+			//worker.WorkerThread = new Thread(worker.Update);
+			//worker.WorkerThread.IsBackground = true;
+			//worker.WorkerThread.Start();
+			m.ReleaseMutex();
 		}
 	}
 }

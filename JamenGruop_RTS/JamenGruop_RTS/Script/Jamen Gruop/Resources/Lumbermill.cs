@@ -16,7 +16,10 @@ namespace JamenGruop_RTS
 
         public Lumbermill(Vector2 pos)
         {
+            sprite = SpriteContainer.sprite["LumberMilk"];
+
             Transform.Position = pos;
+            Transform.Scale = new Vector2(2, 2);
         }
 
         public void GatherResource(Worker worker)
@@ -29,6 +32,8 @@ namespace JamenGruop_RTS
                 worker.WorkerHasDeliveredResource = false;
 
                 worker.WorkerState = EWorkerStates.MovingToTarget;
+
+                worker.Sprite = SpriteContainer.sprite["WLumber"];
             }
         }
     }

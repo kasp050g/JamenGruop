@@ -28,23 +28,28 @@ namespace JamenGruop_RTS
 		public Texture2D Sprite { get => sprite; set => sprite = value; }
 		public bool IsFirstUpdate { get => isFirstUpdate; set => isFirstUpdate = value; }
 
-		public virtual Rectangle BoundingBox
-		{
-			get
-			{
-				return new Rectangle(
-					(int)Transform.Position.X,
-					(int)Transform.Position.Y,
-					sprite.Width,
-					sprite.Height);
-			}
-		}
-
 		public Component() { }
 
 		public Component(Vector2 position)
 		{
+			sprite = SpriteContainer.sprite["Peasant"];
+
 			Transform.Position = position;
+		}
+
+		public virtual Rectangle BoundingBox
+		{
+			get
+			{
+				if (sprite != null)
+					return new Rectangle(
+						(int)Transform.Position.X,
+						(int)Transform.Position.Y,
+						sprite.Width,
+						sprite.Height);
+				else
+					return new Rectangle(0,0,0,0);
+			}
 		}
 
 		public virtual void Awake()

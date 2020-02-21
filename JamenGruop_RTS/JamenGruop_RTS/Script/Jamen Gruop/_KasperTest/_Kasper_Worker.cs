@@ -25,7 +25,7 @@ namespace JamenGruop_RTS
         public _Kasper_eMove_UpAndDown eMove_UpAndDown;
 		public eMoveToSpot eMoveTo;
 
-        public bool isSelected = false;
+        public bool IsSelected = false;
         public Texture2D whiteCircle;
         //protected Vector2 velocity = new Vector2();
         protected Vector2 velocityPrevious = new Vector2();
@@ -46,6 +46,10 @@ namespace JamenGruop_RTS
 
 		public AllBuildings allBuildings;
 
+        private bool isAlive = true;
+
+        private Thread workerThread;
+
 		public override Rectangle UnitCollider
 		{
 			get
@@ -61,16 +65,19 @@ namespace JamenGruop_RTS
 
 		public _Kasper_Worker(Vector2 position, ETeam team) : base(position, team)
         {
-
-        }
-
-        public override void Awake()
-        {
             sprite = SpriteContainer.sprite["Peasant"];
             whiteCircle = SpriteContainer.sprite["WhiteCircle"];
             transform.Scale = new Vector2(2, 2);
-			
+
             layerDepth = 0.8f;
+
+            workerThread = new Thread(UpdateWorkerThread);
+            workerThread.IsBackground = true;
+            workerThread.Start();
+        }
+
+        public override void Awake()
+        { 
             base.Awake();
 
         }
@@ -81,30 +88,33 @@ namespace JamenGruop_RTS
 			transform.Origin = new Vector2(15, 15);
         }
 
-        public override void Update()
+        public void UpdateWorkerThread()
         {
-            base.Update();
+            while (isAlive)
+            {
+                Thread.Sleep(6);
 
-            Animate();
-            TestMove();
-			if(currentGold > 0 || currentFood > 0)
-			{
-				carryGold = true;
-			}
-			else
-			{
-				carryGold = false;
-			}
+                Animate();
+                TestMove();
+                if (currentGold > 0 || currentFood > 0)
+                {
+                    carryGold = true;
+                }
+                else
+                {
+                    carryGold = false;
+                }
 
-			if (currentWood > 0)
-			{
-				carryWood = true;
-			}
-			else
-			{
-				carryWood = false;
-			}
+                if (currentWood > 0)
+                {
+                    carryWood = true;
+                }
+                else
+                {
+                    carryWood = false;
+                }
 
+            }
 		}
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -131,7 +141,7 @@ namespace JamenGruop_RTS
 					// LayerDepth
 					this.layerDepth
 				);
-                if(isSelected == true)
+                if(IsSelected == true)
                 {
                     spriteBatch.Draw(
                         // Texture2D
@@ -163,10 +173,9 @@ namespace JamenGruop_RTS
 			{
 				this.eMoveTo = eMoveTo;
 				myNewPosition = newPosition;
-				if (isMoving == false)
+				if (Vector2.Distance(transform.Position, myNewPosition) > 4f)
 				{
-					Thread myMoveToPosition_Thread = new Thread(MoveToPosition);
-					myMoveToPosition_Thread.Start();
+                    MoveToPosition();
 					isMoving = true;
 				}
 			}
@@ -191,16 +200,13 @@ namespace JamenGruop_RTS
 							allBuildings.barracks.GiveResource(this);
 							break;
 						case eMoveToSpot.LumberMilk:
-							Thread wookWork_Thread = new Thread(allBuildings.lumberMilk.GoInToLumberMilk);
-							wookWork_Thread.Start(this);
+							allBuildings.lumberMilk.GoInToLumberMilk(this);
 							break;
 						case eMoveToSpot.Fram:
-							Thread foodWork_Thread = new Thread(allBuildings.fram.GoInToFram);
-							foodWork_Thread.Start(this);
+							allBuildings.fram.GoInToFram(this);
 							break;
 						case eMoveToSpot.GoldMine:
-							Thread goldWork_Thread = new Thread(allBuildings.goldMine.GoInToGoldMine);
-							goldWork_Thread.Start(this);							
+							allBuildings.goldMine.GoInToGoldMine(this);
 							break;
 						default:
 							break;

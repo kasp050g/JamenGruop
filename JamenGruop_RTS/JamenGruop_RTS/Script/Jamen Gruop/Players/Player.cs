@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JamenGruop_RTS
 {
-	class Player
+	public class Player
 	{
 		public int PlayerGold = 0;
 		public int PlayerWood = 0;

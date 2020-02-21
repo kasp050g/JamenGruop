@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace JamenGruop_RTS
         private float speed = 400f;
 
         private bool isAlive = true;
+        public bool IsSelected = true;
 
         private Barracks barracks;
         private Goldmine mine;
@@ -35,7 +37,9 @@ namespace JamenGruop_RTS
 
         public Worker(Player owner, Vector2 spawnPosition)
         {
-            sprite = SpriteContainer.sprite["Peasant"];
+            sprite = SpriteContainer.sprite["WIdle"];
+            color = Color.White;
+            transform.Scale = new Vector2(2, 2);
 
             WorkerResource = EResources.Gold;
 
@@ -57,47 +61,41 @@ namespace JamenGruop_RTS
                 Thread.Sleep(6); // Monogames Update looper approx hvert 6 ms.
                                  // Dette replikere denne egenskab, for tråden.
 
-                switch (WorkerState)
-                {
-                    case EWorkerStates.Delivering:
-                        velocity = Vector2.Zero;
-                        //barracks.DeliverResource(this);
-                        break;
+                HandleInput();
 
-                    case EWorkerStates.Lumbering:
-                        velocity = Vector2.Zero;
-                        lumbermill.GatherResource(this);
-                        break;
+                    switch (WorkerState)
+                    {
+                        case EWorkerStates.Delivering:
+                            velocity = Vector2.Zero;
+                            barracks.DeliverResource(this);
+                            break;
 
-                    case EWorkerStates.GatheringFood:
-                        velocity = Vector2.Zero;
-                        //farm.GatherResource(this);
-                        break;
+                        case EWorkerStates.Lumbering:
+                            velocity = Vector2.Zero;
+                            lumbermill.GatherResource(this);
+                            break;
 
-                    case EWorkerStates.Mining:
-                        velocity = Vector2.Zero;
-                        mine.GatherResource(this);
-                        break;
+                        case EWorkerStates.GatheringFood:
+                            velocity = Vector2.Zero;
+                            farm.GatherResource(this);
+                            break;
 
-                    case EWorkerStates.MovingToTarget:
-                        GotoTarget();
-                        break;
+                        case EWorkerStates.Mining:
+                            velocity = Vector2.Zero;
+                            mine.GatherResource(this);
+                            break;
 
-                    case EWorkerStates.PlayerControlled:
-                        break;
-                }
+                        case EWorkerStates.MovingToTarget:
+                            GotoTarget();
+                            break;
 
-                //if (WorkerHasDeliveredResource)
-                //    FindNearestResource();
-                //else
-                //{
-                //    FindNearestBarracks();
-                //}
+                        case EWorkerStates.PlayerControlled:
+                            break;
+                    }
 
-                if (targetBuilding != null)
-                    MoveTowardsBuilding();
+                    if (targetBuilding != null)
+                        MoveTowardsBuilding();
 
-                //       TimerIncrease();
             }
 
 
@@ -164,11 +162,23 @@ namespace JamenGruop_RTS
 
         private void ObtainNearestBuilding(Texture2D sprite, ref Component nearestBuilding)
         {
-            nearestBuilding = SceneController.CurrentScene.Components.ToList()
+            nearestBuilding = LucasScene.GameObjects.ToList()
                     .Where(nBuilding => nBuilding.Sprite == sprite)
                     .Select(nBuilding => new Component(nBuilding.Transform.Position))
                     .OrderBy(nBuilding => Vector2.Distance(nBuilding.Transform.Position, Transform.Position))
                     .First();
+        }
+
+        private void HandleInput()
+        {
+            KeyboardState keyState = Keyboard.GetState();
+
+            if (keyState.IsKeyDown(Keys.F))
+                WorkerResource = EResources.Food;
+            if (keyState.IsKeyDown(Keys.G))
+                WorkerResource = EResources.Gold;
+            if (keyState.IsKeyDown(Keys.W))
+                WorkerResource = EResources.Wood;
         }
 
         public void Move()

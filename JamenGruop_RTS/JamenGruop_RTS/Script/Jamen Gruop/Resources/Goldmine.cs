@@ -18,7 +18,10 @@ namespace JamenGruop_RTS
 
         public Goldmine(Vector2 pos)
         {
+            sprite = SpriteContainer.sprite["GoldMine"];
+
             Transform.Position = pos;
+            Transform.Scale = new Vector2(2, 2);
         }
 
         public void GatherResource(Worker worker)
@@ -34,6 +37,7 @@ namespace JamenGruop_RTS
 
                 worker.WorkerState = EWorkerStates.MovingToTarget;
 
+                worker.Sprite = SpriteContainer.sprite["WMineFood"];
                 capacitySemaphore.Release();
             }
         }

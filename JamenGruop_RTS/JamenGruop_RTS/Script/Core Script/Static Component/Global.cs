@@ -13,12 +13,13 @@ namespace JamenGruop_RTS
 	{
 		public static void LoadContent(ContentManager content)
 		{
-			SpriteContainer.LoadContent(content);
+			//SpriteContainer.LoadContent(content);
 			AudioContainer.LoadContent(content);
 		}
 
-		public static void Initialize()
+		public static void Initialize(ContentManager content)
 		{
+			SpriteContainer.LoadContent(content);
 			SceneController.Initialize();
             
 		}
