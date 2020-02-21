@@ -83,6 +83,23 @@ namespace JamenGruop_RTS
 					}
 				}
 			}
+
+			if (Input.GetKeyDown(Microsoft.Xna.Framework.Input.Keys.D1))
+			{
+				CurrentScene = SceneContainer.Scenes[1];
+			}
+			if (Input.GetKeyDown(Microsoft.Xna.Framework.Input.Keys.D2))
+			{
+				CurrentScene = SceneContainer.Scenes[2];
+			}
+			if (Input.GetKeyDown(Microsoft.Xna.Framework.Input.Keys.D3))
+			{
+				CurrentScene = SceneContainer.Scenes[3];
+			}
+			if (Input.GetKeyDown(Microsoft.Xna.Framework.Input.Keys.D4))
+			{
+				CurrentScene = SceneContainer.Scenes[4];
+			}
 		}
 
 		public static void DrawScenes(SpriteBatch spriteBatch)

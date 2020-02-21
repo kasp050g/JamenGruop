@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace JamenGruop_RTS
@@ -15,6 +16,18 @@ namespace JamenGruop_RTS
 		Resource wood;
 		Resource food;
 		public AllBuildings allBuildings;
+
+		public int foodCost = 0;
+		public int goldCost = 100;
+		public int woodCost = 0;
+
+		public int buildTimer = 1;
+
+		public float loaddingBar = 0;
+		public bool showLoadingbar = false;
+
+		static readonly object lockObject = new object(); // Object der bliver brugt til at låse på
+
 		public _Barracks(Resource gold, Resource wood, Resource food)
 		{
 			this.gold = gold;
@@ -49,6 +62,11 @@ namespace JamenGruop_RTS
 		public override void Update()
 		{
 			base.Update();
+
+			if (Input.GetKeyDown(Keys.F))
+			{
+				BuildNewWorker();
+			}
 		}
 
 		public override void Draw(SpriteBatch spriteBatch)
@@ -108,6 +126,39 @@ namespace JamenGruop_RTS
 			}
 
 			return eMoveTo;
+		}
+
+		public void BuildNewWorker()
+		{
+			if(gold.ResourceNumber >= 100)
+			{
+				gold.ResourceNumber -= 100;
+				Thread t = new Thread(BuildNewWorkerThread);
+
+				t.Start(buildTimer);
+			}
+		}
+
+		public void BuildNewWorkerThread(object o_buildTime)
+		{
+			int buildTime = (int)o_buildTime;
+			buildTime *=   1000;
+			int currentTime = 0;
+
+			lock (lockObject)
+			{
+				showLoadingbar = true;
+				while (currentTime >= buildTime)
+				{
+					Thread.Sleep(100);
+					currentTime += 100;
+					loaddingBar = currentTime / buildTime;
+				}
+			}
+			_Kasper_Worker _Kasper_Worker01 = new _Kasper_Worker(new Vector2(0, 0), ETeam.Team01);
+			_Kasper_Worker01.allBuildings = allBuildings;
+			_Kasper_Worker01.Transform.Position = transform.Position + new Vector2(0, 20);
+			SceneController.CurrentScene.Instantiate(_Kasper_Worker01);
 		}
 	}
 }
