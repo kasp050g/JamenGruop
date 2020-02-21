@@ -28,6 +28,25 @@ namespace JamenGruop_RTS
 		public Texture2D Sprite { get => sprite; set => sprite = value; }
 		public bool IsFirstUpdate { get => isFirstUpdate; set => isFirstUpdate = value; }
 
+		public virtual Rectangle BoundingBox
+		{
+			get
+			{
+				return new Rectangle(
+					(int)Transform.Position.X,
+					(int)Transform.Position.Y,
+					sprite.Width,
+					sprite.Height);
+			}
+		}
+
+		public Component() { }
+
+		public Component(Vector2 position)
+		{
+			Transform.Position = position;
+		}
+
 		public virtual void Awake()
 		{
 			UpdateOrigin();			
@@ -119,6 +138,18 @@ namespace JamenGruop_RTS
 			if (OriginPositionEnum.BottomRight == originPositionEnum)
 			{
 				Transform.Origin = new Vector2((float)sprite.Width, (float)sprite.Height);
+			}
+		}
+
+		public virtual void OnCollision(Component component)
+		{
+		}
+
+		public virtual void IsColliding(Component component)
+		{
+			if (BoundingBox.Intersects(component.BoundingBox))
+			{
+				OnCollision(component);
 			}
 		}
 	}

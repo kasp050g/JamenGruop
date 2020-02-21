@@ -68,10 +68,13 @@
     <Compile Include="Script\Jamen Gruop\Animation\Animation.cs" />
     <Compile Include="Script\Jamen Gruop\Buildings\Barracks.cs" />
     <Compile Include="Script\Jamen Gruop\Buildings\_KasperTestbuild.cs" />
+    <Compile Include="Script\Jamen Gruop\Enum\EResources.cs" />
     <Compile Include="Script\Jamen Gruop\Enum\ETeam.cs" />
+    <Compile Include="Script\Jamen Gruop\Enum\EWorkerStates.cs" />
     <Compile Include="Script\Jamen Gruop\JonasTest\BackgroundImage.cs" />
     <Compile Include="Script\Jamen Gruop\Players\Player.cs" />
     <Compile Include="Script\Jamen Gruop\Players\PlayerSelectionRegion.cs" />
+    <Compile Include="Script\Jamen Gruop\Resources\Farm.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\Goldmine.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\Lumbermill.cs" />
     <Compile Include="Script\Jamen Gruop\Resources\ResourceBuilding.cs" />

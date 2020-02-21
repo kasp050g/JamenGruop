@@ -12,5 +12,7 @@ namespace JamenGruop_RTS
 		public int PlayerWood = 0;
 		public int PlayerCurrentFood = 0;
 		public int PlayerMaxFood = 0;
+
+		public ETeam PlayerTeam = new ETeam();
 	}
 }
